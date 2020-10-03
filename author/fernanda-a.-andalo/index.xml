@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fernanda A. Andaló | Allan Pinto</title>
+    <link>https://allansp84.github.io/author/fernanda-a.-andalo/</link>
+      <atom:link href="https://allansp84.github.io/author/fernanda-a.-andalo/index.xml" rel="self" type="application/rss+xml" />
+    <description>Fernanda A. Andaló</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2020 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://allansp84.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Fernanda A. Andaló</title>
+      <link>https://allansp84.github.io/author/fernanda-a.-andalo/</link>
+    </image>
+    
+    <item>
+      <title>The Rise of Data-Driven Models in Presentation Attack Detection</title>
+      <link>https://allansp84.github.io/publication/pereira-2020-springer/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pereira-2020-springer/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

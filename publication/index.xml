@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications | Allan Pinto</title>
+    <link>https://allansp84.github.io/publication/</link>
+      <atom:link href="https://allansp84.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2020 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://allansp84.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Publications</title>
+      <link>https://allansp84.github.io/publication/</link>
+    </image>
+    
+    <item>
+      <title>Parallax Motion Effect Generation Through Instance Segmentation And Depth Estimation</title>
+      <link>https://allansp84.github.io/publication/pinto-2020-icip/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2020-icip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Multirepresentational Fusion of Time Series for Pixelwise Classification</title>
+      <link>https://allansp84.github.io/publication/dias-2020-jstars/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/dias-2020-jstars/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application-oriented retinal image models for computer vision</title>
+      <link>https://allansp84.github.io/publication/silva-2020-sensors/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/silva-2020-sensors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leveraging Shape, Reflectance and Albedo From Shading for Face Presentation Attack Detection</title>
+      <link>https://allansp84.github.io/publication/pinto-2020-tifs/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2020-tifs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MobText: A Compact Method for Scene Text Localization</title>
+      <link>https://allansp84.github.io/publication/decker-2020-visapp/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/decker-2020-visapp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On the Fusion of Text Detection Results: A Genetic Programming Approach</title>
+      <link>https://allansp84.github.io/publication/campana-2020-ieee-access/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/campana-2020-ieee-access/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Performance-level indicators of male elite handball teams</title>
+      <link>https://allansp84.github.io/publication/almeida-2020-ijpas/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/almeida-2020-ijpas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Rise of Data-Driven Models in Presentation Attack Detection</title>
+      <link>https://allansp84.github.io/publication/pereira-2020-springer/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pereira-2020-springer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pelee-Text: A Tiny Convolutional Neural Network for Multi-oriented Scene Text Detection</title>
+      <link>https://allansp84.github.io/publication/cordova-2019-icmla/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/cordova-2019-icmla/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ensemble of Multi-View Learning Classifiers for Cross-Domain Iris Presentation Attack Detection</title>
+      <link>https://allansp84.github.io/publication/kuehlkamp-2019-tifs/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/kuehlkamp-2019-tifs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi-Lingual Text Localization via Language-Specific Convolutional Neural Networks</title>
+      <link>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Provenance Analysis at Scale</title>
+      <link>https://allansp84.github.io/publication/moreira-2018-tip/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/moreira-2018-tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analysis of intrinsic and extrinsic properties of biometric samples for presentation attack detection</title>
+      <link>https://allansp84.github.io/publication/pinto-2018-ph-d-thesis/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2018-ph-d-thesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning in Biometrics</title>
+      <link>https://allansp84.github.io/publication/pinto-2018-crc-press/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2018-crc-press/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Provenance filtering for multimedia phylogeny</title>
+      <link>https://allansp84.github.io/publication/pinto-2017-icip/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2017-icip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spotting the difference: Context retrieval and analysis for improved forgery detection and localization</title>
+      <link>https://allansp84.github.io/publication/brogan-2017-icip/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/brogan-2017-icip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>U-Phylogeny: Undirected provenance graph construction in the wild</title>
+      <link>https://allansp84.github.io/publication/bharati-2017-icip/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/bharati-2017-icip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Face Spoofing Detection Through Visual Codebooks of Spectral Temporal Cubes</title>
+      <link>https://allansp84.github.io/publication/pinto-2015-tip/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2015-tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Visual Rhythms for Detecting Video-Based Facial Spoof Attacks</title>
+      <link>https://allansp84.github.io/publication/pinto-2015-tifs/</link>
+      <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2015-tifs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Representations for Iris, Face, and Fingerprint Spoofing Detection</title>
+      <link>https://allansp84.github.io/publication/menotti-2015-tifs/</link>
+      <pubDate>Wed, 01 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/menotti-2015-tifs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A countermeasure method for video-based face spoofing attacks</title>
+      <link>https://allansp84.github.io/publication/pinto-2013-master-dissertation/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2013-master-dissertation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The 2nd competition on counter measures to 2D face spoofing attacks</title>
+      <link>https://allansp84.github.io/publication/chingovska-2013-icb/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/chingovska-2013-icb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Video-Based Face Spoofing Detection through Visual Rhythm Analysis</title>
+      <link>https://allansp84.github.io/publication/pinto-2012-sibgrapi/</link>
+      <pubDate>Wed, 01 Aug 2012 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2012-sibgrapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VII Escola Regional de Informática de Minas Gerais</title>
+      <link>https://allansp84.github.io/publication/carvalho-2012-eri/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/carvalho-2012-eri/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ChipCflow - Uma Ferramenta para execução de Algoritmos Utilizando o Modelo a Fluxo de Dados Dinâmico em Hardware Reconfigurável-Circuito Matching e Instancias</title>
+      <link>https://allansp84.github.io/publication/pinto-2009-siicusp/</link>
+      <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2009-siicusp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

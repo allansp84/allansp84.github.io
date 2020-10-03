@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Vision | Allan Pinto</title>
+    <link>https://allansp84.github.io/tag/computer-vision/</link>
+      <atom:link href="https://allansp84.github.io/tag/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computer Vision</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2020 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://allansp84.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Computer Vision</title>
+      <link>https://allansp84.github.io/tag/computer-vision/</link>
+    </image>
+    
+    <item>
+      <title>Parallax Motion Effect Generation Through Instance Segmentation And Depth Estimation</title>
+      <link>https://allansp84.github.io/publication/pinto-2020-icip/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2020-icip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application-oriented retinal image models for computer vision</title>
+      <link>https://allansp84.github.io/publication/silva-2020-sensors/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/silva-2020-sensors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MobText: A Compact Method for Scene Text Localization</title>
+      <link>https://allansp84.github.io/publication/decker-2020-visapp/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/decker-2020-visapp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On the Fusion of Text Detection Results: A Genetic Programming Approach</title>
+      <link>https://allansp84.github.io/publication/campana-2020-ieee-access/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/campana-2020-ieee-access/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pelee-Text: A Tiny Convolutional Neural Network for Multi-oriented Scene Text Detection</title>
+      <link>https://allansp84.github.io/publication/cordova-2019-icmla/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/cordova-2019-icmla/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi-Lingual Text Localization via Language-Specific Convolutional Neural Networks</title>
+      <link>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
