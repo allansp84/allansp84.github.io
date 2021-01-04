@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6 | Allan Pinto</title>
+    <link>https://allansp84.github.io/publication-type/6/</link>
+      <atom:link href="https://allansp84.github.io/publication-type/6/index.xml" rel="self" type="application/rss+xml" />
+    <description>6</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2021 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://allansp84.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>6</title>
+      <link>https://allansp84.github.io/publication-type/6/</link>
+    </image>
+    
+    <item>
+      <title>The Rise of Data-Driven Models in Presentation Attack Detection</title>
+      <link>https://allansp84.github.io/publication/pereira-2020-springer/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pereira-2020-springer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning in Biometrics</title>
+      <link>https://allansp84.github.io/publication/pinto-2018-crc-press/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/pinto-2018-crc-press/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VII Escola Regional de Informática de Minas Gerais</title>
+      <link>https://allansp84.github.io/publication/carvalho-2012-eri/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/carvalho-2012-eri/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
