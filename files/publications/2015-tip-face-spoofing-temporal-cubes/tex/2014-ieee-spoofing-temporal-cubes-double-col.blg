@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: 2014-ieee-spoofing-temporal-cubes-double-col.aux
+The style file: bib/IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: references.bib
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 66 entries,
+            4024 wiz_defined-function locations,
+            1293 strings with 20775 characters,
+and the built_in function-call counts, 56306 in all, are:
+= -- 4308
+> -- 1404
+< -- 509
++ -- 769
+- -- 232
+* -- 2712
+:= -- 7832
+add.period$ -- 138
+call.type$ -- 66
+change.case$ -- 68
+chr.to.int$ -- 1254
+cite$ -- 66
+duplicate$ -- 3998
+empty$ -- 4846
+format.name$ -- 290
+if$ -- 13329
+int.to.chr$ -- 0
+int.to.str$ -- 66
+missing$ -- 703
+newline$ -- 221
+num.names$ -- 68
+pop$ -- 1740
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 4335
+stack$ -- 0
+substring$ -- 2925
+swap$ -- 3300
+text.length$ -- 91
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 66
+warning$ -- 0
+while$ -- 254
+width$ -- 68
+write$ -- 640

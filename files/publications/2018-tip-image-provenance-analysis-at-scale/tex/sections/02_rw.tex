@@ -1,0 +1,158 @@
+\section{Related Work}
+\label{sec:rw}
+
+%% 1. Provenance image filtering and CBIR
+%In real-world scenarios, before finding associations %among elements of a relevant pool of images, there is the %necessity of building such pool by selecting samples from %a large corpus (\textit{e.g.}, the Internet), as long as %they are potentially related to a given query of %interest.
+%Such activity constitutes the task of provenance image %filtering, which is related to the literature of %content-based image retrieval (CBIR).
+
+% CBIR state of the art
+\textit{Content-based image retrieval (CBIR).} 
+In recent years, research advances in the domain of CBIR have included optimizing the memory footprint of indexing techniques and employing graphical processing units (GPU) for parallel search.
+A recent technique proposed by Johnson~et~al.~\cite{johnson2017billion} utilizes state-of-the-art image indexing (Optimized Product Quantization (OPQ)~\cite{ge2013optimized}) and runtime optimization to perform similarity search on the order of a billion images.
+Such approaches can be directly applied to perform image filtering for provenance analysis. 
+However, as they follow the traditional CBIR inverted-file index pipeline~\cite{Zisserman_2003}, they will not generalize to all cases due to the nature of the problem.
+While regular CBIR will probably retrieve good host candidates to the query, in the face of compositions (which are fairly common in provenance analysis), small donors will not be highly ranked (or will not even be retrieved) without adaptations to the base approach.
+
+% Allan's ICIP paper
+%In such a direction, Pinto~et~al.~\cite{pinto2017filtering} were the first to improve the retrieval of alien donors related to a query in the scope of multimedia phylogeny.
+The work of Pinto et al.~\cite{pinto2017filtering} improves the retrieval of donors related to a query in the scope of provenance analysis.
+The paper introduces a two-tiered search approach. The first tier constitutes a typical CBIR pipeline, while the second tier provides a context-aware query-masking technique, which selects the regions from the query that make it divergent from hosts previously obtained in the first tier.
+With such regions as evidence, a second search is performed, this time avoiding hosts and retrieving additional potential donor images.
+%Although the approach of Pinto~et~al. does improve the retrieval of alien donors, it adopts a very query-centric point of view, with respect to the problem of provenance analysis.
+Although such an approach does improve the retrieval of donors, it adopts a very ``query-centric'' point of view with respect to the problem of provenance analysis.
+It only finds the hosts and donors that directly share content with the query, ignoring the other descendants and the ancestors of such hosts and donors, which are transitively related to the query.
+
+% This paper's contribution upon the ICIP paper. Move this %to the letter?
+%Nevertheless, a proper provenance analysis is expected to %retrieve the images that also potentially share content %with hosts and donors (\textit{i.e.}, their respective %hosts and donors), and the further hosts and donors, so %forth.
+%For that reason, we extend their work by introducing the %technique of \emph{iterative filtering}, that aims at %solving such limitation.
+%In addition, we also propose a novel interest point %detection heuristic that increases the probability of %describing --- and therefore indexing and searching --- %small alien regions.
+%In summary, it spreads the detected interest points over %the image, therefore being called \emph{distributed %interest point selection}.
+%Both techniques are detailed in %Sec.~\ref{sec:prop:filtering}.
+
+
+%% 2. Provenance graph construction
+% Common point: find associations among images
+\textit{Image processing for image associations.}
+In our proposed workflow, the filtering step yields relevant images, and then provenance graph construction is performed.
+The provenance graph construction step involves finding diverse types of associations among images based on their similarities and/or dissimilarities.
+For that reason, it is related to tasks such as visual object recognition~\cite{russakovsky_2015}, scene recognition~\cite{zhou_2017}, place recognition~\cite{lowry2016visual}, object tracking~\cite{cehovin_2016}, near-duplicate detection~\cite{winkler_2013}, and image phylogeny~\cite{Dias_2012}, since they all rely on the comparison of two or more images.
+
+% Generalization vs. Specialization tasks
+Some visual association tasks may be general, as they relate images based on the common characteristics that optimally make them related.
+This is the case, for instance, for object recognition.
+For example, a query image that implicitly requests ``retrieve all the images containing dogs'' may also be assumed to be generalized (any breed, color, or size).
+Scene recognition (\textit{e.g.}, ``retrieve all the images depicting bedrooms'') may also include generalized queries.
+In such situations, a high content diversity among the related images is usually desired~\cite{Deselaers_2009}.
+By contrast, some image association tasks may be specialized, in the sense that they aim at extracting the specific characteristics that aid in the visual identification of a sample in a particular setting.
+That is the case of place recognition (\textit{e.g.}, retrieve all the images of Times Square), and object tracking (\textit{e.g.}, segment the target vehicle plate across the frames of a street surveillance video).
+%In these cases, diversity is only acceptable regarding %different poses, views, and ages of the same object.
+
+Techniques for associating images in a general way include comparing global image representations~\cite{Deselaers_2010, oliva_2006}, employing bags of visual features~\cite{avila_2013, nanni2013heterogeneous} and using convolutional neural networks (CNNs)~\cite{szegedy_2015, krizhevsky_2017, zhou2014learning, wang2017knowledge}.
+Techniques for associating images in a specialized way include assessing local feature matching~\cite{maresca_2013, yang2015ransac, joly_2007, huang_2008,silva_2015}, image patch matching~\cite{milford2014condition}, and evaluating the quality of image registration, color matching, and mutual information~\cite{Costa_2017, bharati2017uphy}.
+Particularly, provenance analysis is by definition closer to the specialized tasks; for that reason, in this work, we benefit more from techniques mentioned in the latter group.
+
+Although one can adapt deep CNNs to provenance analysis by optimizing them for specialization rather than generalization at training time~\cite{zagoruyko_2015, simoserra_2015}, such a procedure is --- at the present time --- only accomplishable at the expense of prohibitive training times, the need for a reasonably large cluster of GPUs for model screening via hyperparameter optimization, and a sufficiently large amount of available training data~\cite{chollet_2017}.
+In addition, making such a solution perform at scale at inference time is also challenging.
+%After running benchmark experiments using CNN-based approaches for finding image associations and noting long run-times, we have intentionally chosen to pursue faster alternatives to deep learning in this work.
+\RED{Zagoruyko and Komodakis~\cite{zagoruyko_2015} report that their CNN approach performs feature extraction on high-end GPUs twice as slow as  SIFT~\cite{lowe2004distinctive} running on a regular CPU.
+In this work, we have intentionally chosen to pursue faster alternatives.}
+
+%Particularly, provenance analysis is by definition closer to the latter group of specialization tasks.
+%Although one can arguably adapt trendy deep CNNs to provenance analysis, by making networks present specialization capability rather than their typical generalization power, this would have to be done at currently prohibitive training costs, considering the needed processing power and large amount of available training data.
+%In addition, making such a solution work at scale would also be challenging.
+%For those reasons, in the present work, we benefit more from the techniques belonging to the latter group.
+
+%\begin{table*}[t]
+%\caption{TODO}
+%\centering
+%\begin{tabular}{ccccccccc}
+%\hline
+%Reference & Near duplicates? & Semantically similar? & Composites? & Assumed transformations & Pixel-wise comparison & Graph algorithm & Input & Output\\
+%\hline
+%\cite{Dias_2012} & Yes & No & No & cropping, warping, color correction, JPEG compression & MSE & oriented Kruskal & set of near duplicates & phylogeny tree\\
+%\hline
+%\end{tabular}
+%\end{table*}
+
+% Image phylogeny
+\textit{Image phylogeny trees.}
+Provenance analysis is related to the simpler task of image phylogeny, which seeks to recover a tree of relationships.
+Kennedy and Chang~\cite{Kennedy_2008} were the first to point out the possibility of relying on the color information of pixels and local features for gathering clues about plausible parent-child relationships among images.
+Based upon the pixel colors and local features, they suggest detecting a closed set of directed manipulations between pairs of content-related images (namely copy, scaling, color change, cropping, content insertion, and overlay detection).
+
+%Rather than exhaustively modeling all the possible manipulations between near-duplicate images, Dias et al.~\cite{Dias_2011} departed from the assumption of having a good dissimilarity function that can be used for building a pairwise image dissimilarity matrix $D$.
+Rather than exhaustively modeling all of the possible manipulations between near-duplicate images, Dias et al.~\cite{Dias_2011} suggest having a good dissimilarity function that can be used for building a pairwise image dissimilarity matrix $D$.
+Accordingly, they introduce \emph{oriented Kruskal}, an algorithm that processes $D$ to output an \emph{image phylogeny tree}, a data structure that expresses the probable evolution of the near duplicates at hand.
+In subsequent work, Dias et al.~\cite{Dias_2012} formally present the dissimilarity-calculation protocol that is widely used in the related literature for computing $D$.
+They then go on to conduct a large set of experiments with this methodology, considering a family of six possible transformations, namely scaling, cropping, affine warping, brightness, contrast, and lossy content compression~\cite{Dias_2013_large}.
+Finally, in~\cite{Dias_2013}, Dias et al. replace oriented Kruskal with other phylogeny tree building methods: best Prim, oriented Prim, and %Chu-Liu, Bock and
+Edmonds' optimum branching~\cite{edmonds_1967}, with the last solution consistently yielding improved results.
+
+% Image phylogeny: presence of semantically similar images
+\textit{Image phylogeny forests.}
+The image phylogeny solutions mentioned up to this point were conceived to handle near duplicates; they do not work in the presence of semantically similar images.
+Aware of such limitations, Dias et al.~\cite{Dias_2013_fsi} extend the oriented Kruskal solution to \emph{automatic oriented Kruskal}, an algorithm that finds a family of disjoint phylogeny trees (a phylogeny forest) from a given set of near duplicates and semantically similar images, such that each tree describes the relationships of a particular group of near duplicates.
+Analogously, Costa et al.~\cite{Costa_2014} provide two extensions to the optimum branching algorithm, namely \emph{automatic optimum branching} and \emph{extended automatic optimum branching}, both based on automatically calculated cut-off points.
+%The former solution, similarly to automatic oriented Kruskal, employs a dissimilarity-threshold-based scheme to decide whether to add a candidate image to the tree currently being built, or to leave it to the next one.
+%The latter solution, in turn, automatically finds the disjoint phylogeny trees, at the cost of performing more computations.
+Alternatively, Oikawa et al.~\cite{oikawa_2016} propose the use of clustering techniques for finding the various phylogeny trees; the idea is to group images coming from the same source, while placing semantically similar images in different clusters.
+Finally, Costa et al.~\cite{Costa_2017} improve the creation of the dissimilarity matrices, regardless of the graph algorithm used for constructing the trees.
+
+% Image phylogeny: multiple parents
+\textit{Multiple parenting phylogeny trees.}
+Although previous phylogeny work established preliminary analysis strategies and algorithms to understand the evolution of images, the key scenario of image composition, in which objects from one image are spliced into another, was not addressed.
+Compositions were first addressed within the phylogeny context by Oliveira et al.~\cite{Oliveira_2016}.
+The solution presented by these authors assumes two parents (one host and one donor) per composite.
+Extended automatic optimum branching is thus applied for the construction of ideally three phylogeny trees: one for the near duplicates of the host, one for the near duplicates of the donor, and one for the near duplicates of the composite.
+%Moreover, they adopt the same dissimilarity-calculation protocol proposed in~\cite{Dias_2012}~and~\cite{Dias_2013}, with the fixed set of possible transformations.
+Even though this work is very relevant to ours herein, it has a couple of limitations.
+First, it does not consider the possibility of more than two images donating content towards one composite image (such as the composite with sharks in Panel B of Fig.~\ref{fig:teaser}).
+Second, Oliveira et al. require all images to be in JPEG format.
+
+% From image phylogeny to provenance analysis
+\textit{Provenance graphs.}
+To date, the entire image phylogeny literature has made use of metrics that focus on finding the root of the tree, rather than evaluating the phylogeny tree as a whole, considering every image transformation path in the case of provenance.
+Aware of such limitations and aiming to foster more research on the topic, the American National Institute of Standards and Technology (NIST) has recently introduced new terminology, metrics, and datasets, coining the term \emph{image provenance} to express a broader notion of image phylogeny, and suggesting directed acyclic \emph{provenance graphs}, instead of trees, as the data structure that describes the provenance of images~\cite{nist2017plan}.
+They also suggest the use of a \emph{query} as the starting point for provenance analysis.
+
+%Following this, Bharati et al.~\cite{bharati2017uphy} introduced a more generalized method of provenance graph construction, which does not assume anything about the images and content transformations.
+Following this, Bharati et al.~\cite{bharati2017uphy} introduced a more generalized method of provenance graph construction, which does not assume anything about the images and transformations.
+A content-based method for the construction of undirected provenance graphs is proposed, which relies upon the extraction and geometrically-consistent matching of interest points.
+Utilizing this information to build the dissimilarity matrix, the method uses Kruskal's %spanning tree
+algorithm to obtain the provenance graph.
+The approach performs well over small cases, even in the presence of distractors (\textit{i.e.}, images that are not related to the query). %, but the performance degrades for larger cases.
+%The paper concludes that the method holds potential to generalize well for real-world provenance cases.
+
+% Too much defense?
+%This work directly benefits from the methods presented %in~\cite{bharati2017uphy}.
+%However, differently from that one, it provides a %complete end-to-end pipeline for image provenance %analysis, including the initial filtering step.
+%In addition, it introduces a novel graph algorithm for %constructing provenance graphs (clustered provenance %graph expansion), a strategy for obtaining directed %edges, and results over more datasets.
+%Table~\cite{table:ref} summarizes the literature of image %phylogeny and provenance analysis, with this work put in %perspective.
+
+%% Removing this to save space (this discussion isn't 
+%% immediately relevant to our paper) WJS
+%% Types of image associations and our focus
+%\textit{Beyond visual-content associations.}
+%This work and the aforementioned literature focus on %finding spatial associations among images, relying solely %upon the visual content (\textit{e.g.}, matched interest %points and regions).
+%There is some prior work aimed at comparing images based %upon information other than pixels.
+%That is the case, for instance, of the establishment of %temporal associations for photo %sequencing~\cite{basha2012photo}, and the analysis of %image meta-data for manipulation %detection~\cite{fan_2011}.
+
+% [MAJOR] Moved to here >>>>>>>
+\RED{Extending the field of provenance analysis, this paper provides the following contributions:}
+\begin{enumerate}
+\item \emph{\RED{Distributed interest point selection}}: \RED{a novel interest point selection strategy that aims at spatially diversifying the image regions used for indexing within the provenance image filtering task.}
+
+\vspace{0.1cm}
+\item \emph{\RED{Iterative filtering}}: \RED{a novel querying strategy that iteratively retrieves images that are directly or transitively related to the query, considering all possible hosts, donors, composites, and their respective near duplicates.}
+
+\vspace{0.1cm}
+\item \emph{\RED{Clustered provenance graph construction}}: \RED{a novel graph construction algorithm that clusters images according to their content (joining near duplicates into the same clusters), prior to establishing their intra- and inter-cluster directed relationship maps.}
+
+\vspace{0.1cm}
+\item \RED{State-of-the-art results on the provenance analysis benchmark released by NIST~\cite{nist2017dataset}.}
+
+\vspace{0.1cm}
+\item \RED{A new dataset of real-world scenarios containing composite images from Photoshop battles held on the Reddit website~\cite{reddit2017photoshopbattles}.}
+\RED{Experiments performed over this dataset highlight the real-world applicability of the approach.}
+\end{enumerate}
+% <<<<<<< [MAJOR] Moved to here

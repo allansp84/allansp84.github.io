@@ -1,0 +1,25 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+In this paper, we addressed the iris Presentation Attack Detection problem, as defined by the LivDet-Iris 2017 Competition, using an approach based on an ensemble of multi-view learning detectors. Our method has advanced the state of the art in iris PAD and offered insight on the potential use of different BSIF filters to deal with different textures in the same domain.
+
+We presented a new approach combining two techniques for iris PAD: CNNs and Ensemble Learning. Extensive experimentation was conducted using the most challenging datasets publicly available. The experiments included cross-sensor and cross-dataset evaluations. Results show a varying ability for different BSIF+CNN representations to capture different aspects of the input images.
+
+Simple fusion experiments show that although helpful, such techniques are not yet capable to provide optimal classification accuracy.  In fact, we demonstrate how the continuous addition of classifiers to the fusion does not necessarily improve the classification performance. In that context, we presented a new method for selection of classifiers, based on the meta-analysis of their Gini importance and inter-classifier complementarity.
+
+Our Meta-Fusion method was able to consistently outperform the LivDet-Iris 2017 competition winner, with an overall Reduction Error Rate of more than $21\%$. Specifically, the HTER in the Warsaw dataset was only $0.68\%$, corresponding to a reduction in error of more than 88\% in relation to the top result reported in LivDet-Iris 2017. Although not as extreme as in Warsaw case, classification accuracy was also improved for other datasets, with reduction in error ranging from $1$ to $19\%$. Experiments with the combined dataset showed an additional improvement of $37\%$ on the overall HTER.
+
+As a suggestion for future work, an immediate alternative application for our method is face PAD. A significant portion of face recognition attacks are based on printouts, as we believe meta-fusion of multi-view-CNN predictors could be easily applied to it with good potential for success.
+
+% \todo[inline]{
+% \begin{itemize}
+%     \item An effective/smart way to combine two well-known techniques for iris presentation attack detection that outperforms the state of the art.
+%     \item Extensive experimentation using the most challenging datasets publicly available.
+%     \item Evaluation in challenging scenarios such as cross-sensor/cross-dataset.
+%     \item A new iris anti-spoofing algorithm to detect both contact lenses and print-based attempted attacks.
+%     \item Generalization power of our method increases significantly when we discard some classifiers    
+%     \item A new algorithm for selecting classifiers based on information gain and Cohen's Kappa statistic.
+%     \item One possible application for this solution is face PAD.
+% \end{itemize}
+% }
+

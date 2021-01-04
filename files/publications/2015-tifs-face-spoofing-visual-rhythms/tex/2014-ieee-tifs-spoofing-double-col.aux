@@ -1,0 +1,213 @@
+\relax 
+\citation{Jain:HB:2008}
+\citation{Buhan:CTITUT:2005}
+\citation{Jain:HB:2008}
+\citation{Tan:ECCV:2010,Maatta:IJCB:2011,Schwartz:IJCB:2011}
+\citation{Pan:ICCV:2007,Li:ICMLC:2008,Xu:ICIP:2008}
+\citation{Pan:TS:2011,Anjos:IJCB:2011}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
+\newlabel{Introduction}{{I}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces General biometric system and its vulnerability points. (a) a threat resulting from an attack on the biometric sensor, presenting a synthetic biometric data (fake); (b), (c) and (d) represent threats resulting from re-submission of a biometric latent signal previously stored in the communication channel; (e) attack on the matching algorithm in order to produce a higher or lower score; (f) an attack on the communication channel between the enrollment center and the database ({\color {black}{the control}} of this channel allows an attacker to overwrite the template that is sent to the biometric database); (g) an attack on the database itself, which could result in corrupted models, denial of service to the person associated to the corrupted model, or fraudulent authorization of an individual; (h) an attack that consists of overwriting the output of the matching algorithm, bypassing the authentication process.}}{1}}
+\newlabel{biometricsystem}{{1}{1}}
+\citation{Pinto:SIBGRAPI:2012}
+\citation{Anjos:IJCB:2011}
+\citation{Pinto:SIBGRAPI:2012}
+\citation{Pan_2008}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}}
+\newlabel{sec:RelatedWork}{{II}{2}}
+\citation{Tan:ECCV:2010}
+\citation{Anjos:IJCB:2011}
+\citation{Zhang:ICB:2012}
+\citation{Chingovska:BIOSEG:2012}
+\citation{Anjos:IJCB:2011}
+\citation{Anjos:IJCB:2011}
+\citation{Anjos:IJCB:2011}
+\citation{Pan:ICCV:2007}
+\citation{Li:ICMLC:2008}
+\citation{Xu:ICIP:2008}
+\citation{Tronci:IJCB:2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Existing Databases}{3}}
+\newlabel{sec:databases}{{\unhbox \voidb@x \hbox {II-A}}{3}}
+\newlabel{sec:nuaa}{{\unhbox \voidb@x \hbox {II-A}1}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}1}NUAA Database}{3}}
+\newlabel{sec:print:attack}{{\unhbox \voidb@x \hbox {II-A}2}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}2}Print-Attack Database}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}3}CASIA Database}{3}}
+\newlabel{sec:replay:attack}{{\unhbox \voidb@x \hbox {II-A}4}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}4}Replay-Attack Database}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Motion Analysis and Clues of the Scene}{3}}
+\citation{Pan:TS:2011}
+\citation{Pan:ICCV:2007}
+\citation{Anjos:IJCB:2011}
+\citation{Yan:ICARCV:2012}
+\citation{Li:BTHI:2004}
+\citation{Tan:ECCV:2010}
+\citation{Peixoto:ICIP:2011}
+\citation{Tan:ECCV:2010}
+\citation{Maatta:IJCB:2011}
+\citation{Maatta:IET:2012}
+\citation{Schwartz:IJCB:2011}
+\citation{Kim:ICB:2012}
+\citation{Zhang:ICB:2012}
+\citation{Chingovska:BIOSEG:2012}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Texture and Frequency Analysis}{4}}
+\citation{Bao:ICIASP:2009}
+\citation{Kollreider:IVC:2009}
+\citation{Marsico:ICB:2012}
+\citation{Biggio:IJCB:2011,Marasco:ICMCS:2011,Akhtar:ICIAP:2011,Akhtar:BTAS:2012,Biggio:IET:2012}
+\citation{Li:ICMLC:2008}
+\citation{Lukas:TIFS:2006}
+\citation{Lukas:TIFS:2006,Rocha:CSUR:2011}
+\citation{Beach:PP:2008}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Other Approaches}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-E}}Problems with the Existing Approaches}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Proposed Method}{5}}
+\newlabel{sec:ProposedMethod}{{III}{5}}
+\citation{Chung:KT:1999}
+\citation{Chun:RAVIS:2002}
+\citation{Guimaraes:SIBGRAPI:2001}
+\citation{Chung:KT:1999}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Proposed method. Given a training set consisting of videos of valid accesses, video-based spoofs and a test video, we first extract a noise signature of every video (training and testing) and calculate the Fourier Spectrum on logarithmic scale for each video frame and then summarize each video by means of its visual rhythm. Considering the training samples, we train a classifier using a summarized version of the visual rhythms obtained by the estimation of the gray level co-occurrence matrices, as features. With a trained classifier, we are able to test a visual rhythm for a given video under investigation and point out whether it is a valid access or a spoof.}}{6}}
+\newlabel{fig:method}{{2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Calculation of the Residual Noise Videos}{6}}
+\newlabel{eq:ruido}{{1}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Calculation of the Fourier Spectrum Videos}{6}}
+\newlabel{eq:dft}{{2}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces {\color {black}{Example of a video frame}} of the spectra generated from (a) a valid video and (b) an attack video.}}{6}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Valid video.}}}{6}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Attack video.}}}{6}}
+\newlabel{fig:spectrum}{{3}{6}}
+\newlabel{eq:spectrum}{{3}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Calculation of the Visual Rhythms}{6}}
+\newlabel{eq:rvformal}{{4}{6}}
+\citation{Smith:SEG:1997}
+\citation{Haralick:TSMC:1973}
+\citation{Ojala:TPAMI:2002}
+\citation{Dalal:CVPR:2005}
+\citation{Ojala:TPAMI:2002}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces {\color {black}{Visual rhythms constructed}} from (a)-(b) central horizontal lines and from (c)-(d) central vertical lines. Note that the visual rhythm obtained from horizontal lines has been rotated 90 degrees for {visualization purposes}.}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Valid video.}}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Attack video.}}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Valid video.}}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Attack video.}}}{7}}
+\newlabel{fig:rv}{{4}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Examples of spectra whose highest responses are not only at the abscissa and ordinates axes.}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Valid video.}}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Attack video.}}}{7}}
+\newlabel{fig:espectro}{{5}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Examples of visual rhythms constructed in a zig-zag traversal.}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Valid video.}}}{7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Attack video.}}}{7}}
+\newlabel{fig:rvZigzag}{{6}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Feature Extraction}{7}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-D}0a}GLCM}{7}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-D}0b}LBP}{7}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {III-D}0c}HOG}{7}}
+\citation{Cortes:ML:1995}
+\citation{Hoskuldsson_1988}
+\citation{Tan:ECCV:2010}
+\citation{Anjos:IJCB:2011}
+\citation{Zhang:ICB:2012}
+\citation{Chingovska:BIOSEG:2012}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-E}}Learning}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Database Creation}{8}}
+\newlabel{sec:DatabaseCreation}{{IV}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Experimental Results}{8}}
+\newlabel{sec:ExperimentsAndResults}{{V}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Protocols for the UVAD Database}{8}}
+\citation{Pinto:SIBGRAPI:2012}
+\citation{Chang:2011:TIST}
+\citation{schwartz09c}
+\citation{schwartz09c}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Examples of valid access video frames for outdoor (first and second images on the left) and indoor (three images on the right) scenes.}}{9}}
+\newlabel{fig:exemplosVideosValidos}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Examples of attempted attack video frames for outdoor (first and second images on the left) and indoor (three images on the right) scenes using Sony (first and second columns), Canon (third and fourth columns) and Nikon (last column) cameras.}}{9}}
+\newlabel{fig:exemplosVideosAtaque}{{8}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Comparison of the proposed UVAD database and other available reference benchmarks in the literature.}}{9}}
+\newlabel{table:database}{{I}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Parameters for the Filtering Process, Visual Rhythm Analysis and Classification}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Number of features (dimensions) using either the direct pixel intensities as features or the features extracted by image description methods.}}{9}}
+\newlabel{table:dimensaoGLCM}{{II}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Experiment I: Finding the Best Configuration}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-D}}Experiment II: Influence of the Biometric Sensors}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Results (AUC) of the experiment in which we find the best configuration of our method considering all possible setups.}}{10}}
+\newlabel{table:best_config}{{III}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces {Differences in mean levels of the results obtained by the different descriptors used in this work and their confidence intervals for $95\%$ family-wise confidence level. There are statistical difference between the comparisons whose confidence intervals do not include zero.}}}{10}}
+\newlabel{fig:descriptorstats}{{9}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces {Differences in mean levels of the results obtained by the visual rhythms considered in this work and their confidence intervals for $95\%$ family-wise confidence level. There are statistical difference between the comparisons whose confidence intervals do not include zero.}}}{10}}
+\newlabel{fig:visualrhythmstats}{{10}{10}}
+\citation{Scheirer:TPAMI:2012}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Schwartz:IJCB:2011}
+\citation{Chingovska:BIOSEG:2012}
+\citation{Chingovska:BIOSEG:2012}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Results (AUC) of the experiment analyzing the influence of the biometric sensors using a PLS Classifier and Median Filter.}}{11}}
+\newlabel{table:experimento2_median_pls}{{IV}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-E}}Experiment III: Influence of the Display Devices}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-F}}Experiment IV: Comparison to a State-of-the-Art Method for Photo-Based Spoofing Attack Detection}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Comparison between\nobreakspace  {}\cite  {Schwartz:IJCB:2011} and the method proposed in this work in its best setup (using combined visual rhythm, Median filter and a PLS Classifier).}}{11}}
+\newlabel{table:comparacao_ijcb}{{VI}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-G}}Experiment V: Evaluation of the Method in the Replay-Attack Database}{11}}
+\citation{Chingovska:BIOSEG:2012}
+\citation{Bestagini:2013}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Results (AUC) of the experiment analyzing the influence of the display devices using a PLS Classifier and Median Filter.}}{12}}
+\newlabel{table:experimento3}{{V}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Results (AUC) for the test set of the Replay-Attack database}}{12}}
+\newlabel{table:replayEval}{{VII}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces {Example of a video frame of the spectra generated from (a) a valid access video of the Replay-Attack database and (b) a video of an attempted attack of the same dataset. Note a concentration of information on the center rather than spread over as for the videos case shown in\nobreakspace  {}{\color {black}{Fig.}}\nobreakspace  {}5\hbox {}.}}}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces { }}}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces { }}}{12}}
+\newlabel{fig:spectrum_datasets:replay}{{11}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions and Future Work}{12}}
+\newlabel{sec:Conclusion}{{VI}{12}}
+\bibstyle{IEEEtran}
+\bibcite{Jain:HB:2008}{1}
+\bibcite{Buhan:CTITUT:2005}{2}
+\bibcite{Tan:ECCV:2010}{3}
+\bibcite{Maatta:IJCB:2011}{4}
+\bibcite{Schwartz:IJCB:2011}{5}
+\bibcite{Pan:ICCV:2007}{6}
+\bibcite{Li:ICMLC:2008}{7}
+\bibcite{Xu:ICIP:2008}{8}
+\bibcite{Pan:TS:2011}{9}
+\bibcite{Anjos:IJCB:2011}{10}
+\bibcite{Pinto:SIBGRAPI:2012}{11}
+\bibcite{Pan_2008}{12}
+\bibcite{Zhang:ICB:2012}{13}
+\bibcite{Chingovska:BIOSEG:2012}{14}
+\bibcite{Tronci:IJCB:2011}{15}
+\bibcite{Yan:ICARCV:2012}{16}
+\bibcite{Li:BTHI:2004}{17}
+\bibcite{Peixoto:ICIP:2011}{18}
+\bibcite{Maatta:IET:2012}{19}
+\bibcite{Kim:ICB:2012}{20}
+\bibcite{Bao:ICIASP:2009}{21}
+\bibcite{Kollreider:IVC:2009}{22}
+\bibcite{Marsico:ICB:2012}{23}
+\bibcite{Biggio:IJCB:2011}{24}
+\bibcite{Marasco:ICMCS:2011}{25}
+\bibcite{Akhtar:ICIAP:2011}{26}
+\bibcite{Akhtar:BTAS:2012}{27}
+\bibcite{Biggio:IET:2012}{28}
+\bibcite{Lukas:TIFS:2006}{29}
+\bibcite{Rocha:CSUR:2011}{30}
+\bibcite{Beach:PP:2008}{31}
+\bibcite{Chung:KT:1999}{32}
+\bibcite{Chun:RAVIS:2002}{33}
+\bibcite{Guimaraes:SIBGRAPI:2001}{34}
+\bibcite{Smith:SEG:1997}{35}
+\bibcite{Haralick:TSMC:1973}{36}
+\bibcite{Ojala:TPAMI:2002}{37}
+\bibcite{Dalal:CVPR:2005}{38}
+\bibcite{Cortes:ML:1995}{39}
+\bibcite{Hoskuldsson_1988}{40}
+\bibcite{Chang:2011:TIST}{41}
+\bibcite{schwartz09c}{42}
+\bibcite{Scheirer:TPAMI:2012}{43}
+\bibcite{Bestagini:2013}{44}
+\@writefile{toc}{\contentsline {section}{References}{13}}

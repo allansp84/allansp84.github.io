@@ -1,0 +1,305 @@
+\pdfoutput=1 % required by arXiv
+% twocolumn - singlespace
+\documentclass[journal]{IEEEtran}
+\newif\iffinal
+\finaltrue
+
+%% onecolumn - doublesplaced - for review
+%\documentclass[11pt,onecolumn,draftcls,journal]{IEEEtran}
+%\usepackage[figuresonly]{endfloat} %% required endfloat package version 2.5 for figuresonly option to work
+%\newif\iffinal
+%\finalfalse
+
+
+
+%\usepackage{ifpdf}
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+%\usepackage{cite}
+
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{./figs/}{./jpeg/}}
+  \DeclareGraphicsExtensions{.pdf,.png}
+\else
+  % \usepackage[dvips]{graphicx}
+  % \graphicspath{{../eps/}}
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage{flushend}
+\usepackage{enumerate}
+
+%\usepackage[cmex10]{amsmath}
+%\usepackage{algorithmic}
+%\usepackage{array}
+\ifCLASSOPTIONcompsoc
+  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+  \usepackage[caption=false,font=footnotesize]{subfig}
+\fi
+%\usepackage{fixltx2e}
+%\usepackage{stfloats}
+%\fnbelowfloat
+%\usepackage{dblfloatfix}
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{balance}
+
+\usepackage{multirow} % - Giovani - 27/06/2014
+\usepackage{marvosym} % - Giovani - 03/07/2014
+
+%%% for ToDo command - colored edition
+\usepackage{color,colortbl}
+\usepackage{hhline}
+\definecolor{DarkGray}{rgb}{0.25,0.25,0.25}
+\definecolor{LightGray}{rgb}{0.75,0.75,0.75}
+
+\usepackage[table]{xcolor}
+\newcommand{\TODO}[1]{\textcolor{black}{[\textbf{TODO: #1}]}}
+\newcommand{\ToDo}[1]{\textcolor{black}{[\textbf{ToDo: #1}]}}
+\newcommand\blue[1]{{\color{black}#1}}
+\newcommand\red[1]{{\color{black}{#1}}}
+
+\newcommand\rva[1]{{\color{black}{#1}}}
+\newcommand\rvg[1]{{\color{black}{#1}}}
+\newcommand\rrv[1]{{\color{black}#1}}
+\newcommand\question[2]{{\color{red}{#1}}{\color{black}{ [#2]}}}
+
+\newcommand{\dm}[1]{\textcolor{green}{{\bf{\textsf{\underline{Menotti}: #1\\}}}}}
+\newcommand{\DM}[1]{\textcolor{green}{#1\\}}
+%%%
+
+\hyphenation{menottid spoofnet}
+
+
+\begin{document}
+\sloppy
+
+% A Unified Framework to Learn Deep Representations for Biometric Spoofing Modalities
+% \title{A Unified Framework to Learn Deep Representations for Iris, Face, and Fingerprint Spoofing Attacks}
+\title{Deep Representations for Iris, Face, and Fingerprint Spoofing Detection}
+% through Convolutional Neural Networks 
+
+\author{David~Menotti\textsuperscript,~\IEEEmembership{Member,~IEEE,}
+        Giovani~Chiachia\textsuperscript,
+        Allan~Pinto,~\IEEEmembership{Student Member,~IEEE,}
+        William~Robson~Schwartz,~\IEEEmembership{Member,~IEEE,}
+        Helio~Pedrini,~\IEEEmembership{Member,~IEEE,}\\
+        Alexandre~Xavier~Falc\~{a}o,~\IEEEmembership{Member,~IEEE,}
+        and~Anderson~Rocha,~\IEEEmembership{Member,~IEEE}% <-this % stops a space
+\thanks{D. Menotti, G. Chiachia, A. Pinto, H. Pedrini, A. X. Falc\~{a}o and A. Rocha are with the Institute of Computing (IC), University of Campinas, Campinas (UNICAMP), SP, 13083-852, Brazil. email: menottid@gmail.com, \{chiachia,allan.pinto,helio.pedrini,afalcao,anderson.rocha\}@ic.unicamp.br.}% <-this % stops a space
+\thanks{W. R. Schwartz is with the Computer Science Department (DCC), Federal University of Minas Gerais (UFMG), Belo Horizonte, MG, 31270-010, Brazil. email: william@dcc.ufmg.br.}% <-this % stops a space
+\thanks{D. Menotti is also with Computing Department (DECOM), Federal University of Ouro Preto (UFOP), Ouro Preto, MG, 35400-000, Brazil (he has spent his sabbatical year (2013-2014) at IC-UNICAMP). email: menotti@iceb.ufop.br.}% <-this % stops a space
+\thanks{\textit{(David Menotti and Giovani Chiachia contributed equally to this work.)}}%
+}
+
+% The paper headers
+\markboth{IEEE Transactions on Information Forensics and Security,~Vol.~XX, No.~XX, April~XXXX}%
+{Menotti \MakeLowercase{\textit{et al.}}: Deep Representations for Iris, Face, and Fingerprint Spoofing Detection}
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+% If you want to put a publisher's ID mark on the page you can do it like this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2012 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second column for its text to clear the IEEEpubid mark.
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+Biometrics systems have significantly improved person
+identification and authentication, playing an important role in
+personal, national, and global security. However, these systems
+might be deceived (or ``spoofed'') and, despite the recent advances
+in spoofing detection, current solutions often rely on domain
+knowledge, specific biometric reading systems, and attack types. We
+assume a very limited knowledge about biometric spoofing at the
+sensor to derive outstanding spoofing detection systems for iris,
+face, and fingerprint modalities based on two deep learning
+approaches.
+The first approach consists of learning suitable convolutional 
+network architectures for each domain, while the second approach
+focuses on learning the weights of the network via back-propagation. We
+consider nine biometric spoofing benchmarks --- each one containing
+real and fake samples of a given biometric modality and attack type
+--- and learn deep representations for each benchmark by combining and
+contrasting the two learning approaches. This strategy not only
+provides better comprehension of how these approaches interplay, but
+also creates systems that exceed the best known results in eight out
+of the nine benchmarks. The results strongly indicate that spoofing
+detection systems based on convolutional networks can be robust to
+attacks already known and possibly adapted, with little effort, to
+image-based attacks that are yet to come.
+
+% Biometrics systems have drastically improved person identification
+% and/or authentication, playing an important role in personal,
+% national, and global security. However, such systems might be
+% deceived or ``spoofed'' and, despite the advances in
+% spoofing detection to each biometric modality, there is still a lack
+% of a clearly unified approach. Aiming at filling this gap, we
+% propose a unified framework to learn deep representations for three
+% different modalities of spoofing biometrics (i.e., face, iris, and
+% fingerprint). The representations are learned directly from the
+% data with an optimization procedure that randomly searches for the best
+% convolutional neural network from a family of networks defined in a hyperparameter search
+% space. Atop these representations, we couple a linear Support Vector Machine
+% classifiers for the final
+% decision making. Instead of learning thousands and/or millions of
+% network weights/parameters based either on back-propagation-like or unsupervised
+% feature learning techniques, our networks use random filter weights initialized in a 
+% convenient way, which allows us to quickly probe thousands of network configurations.
+% Experiments on nine publicly available benchmarks of these 
+% three modalities show that our framework achieves either very 
+% competitive or state-of-the-art results for all problems and modalities.
+
+% Biometrics systems have drastically improved person identification
+% and/or authentication, playing an important role in personal,
+% national, and global security. However, such systems might be
+% deceived or ``spoofed'' and, despite the advances in
+% spoofing detection to each biometric modality, there is still a lack
+% of a clearly unified approach. Aiming at filling this gap, we
+% propose a unified framework to learn deep representations for three
+% different modalities of spoofing biometrics (i.e., face, iris, and
+% fingerprint). The representations are learned directly from the
+% data, as statistical models of the distributions of the
+% real and fake classes, using convolutional neural networks. On the
+% top of these representations, we couple a Support Vector Machine
+% classifier with linear kernel and hard margins for the final
+% decision making. Instead of learning thousands and/or millions of
+% network weights/parameters, based either on back-propagation-like or unsupervised
+% learning techniques, we focus on the random optimization of the
+% network architecture with zero-mean and unit-norm uniform random
+% weights. Experiments on nine publicly available benchmarks of these 
+% three modalities show that our framework achieves either very 
+% competitive or state-of-the-art results for all problems and modalities.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Deep Learning, Convolutional Networks, Hyperparameter Architecture Optimization, Filter Weights Learning, Back-propagation, Spoofing Detection.
+\end{IEEEkeywords}
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+% Please do not TOUCH the list or names below. Anderson is reviewing
+\input{introduction} % rereview by Menotti on 1h30
+\input{relatedwork} % order background first?
+\input{databases} 
+\input{methodology}
+\input{experiments}
+\input{conclusion}
+\input{appendix}
+
+\section*{Acknowledgment}
+
+We thank UFOP, Brazilian National Research Counsil -- CNPq (Grants \#303673/2010-9,  \#304352/2012-8, \#307113/2012-4, \#477662/2013-7, \#487529/2013-8, \#479070/2013-0, and \#477457/2013-4), the CAPES DeepEyes project, S\~ao Paulo Research Foundation -- FAPESP, (Grants \#2010/05647-4, \#2011/22749-8, \#2013/04172-0, and \#2013/11359-0), and Minas Gerais Research Foundation -- FAPEMIG (Grant APQ-01806-13). 
+D. Menotti thanks FAPESP for a grant to acquiring two NVIDIA GeForce GTX Titan Black with 6GB each.
+We also thank NVIDIA for donating five GPUs used in the experiments, a Tesla K40 with 12GB to A. X. Falc{\~a}o, two GeForce GTX 680 with 2GB each to G. Chiachia, and two GeForce GTX Titan Black with 6GB each to D. Menotti.
+
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+%\IEEEtriggeratref{8}
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+%\balance
+\bibliographystyle{IEEEtran}
+\bibliography{spoofing,iris,faces,fingerprint}
+%IEEEabrv,
+
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-menotti}}]{David Menotti} received his Computer Engineering and Informatics Applied Master degrees from the Pontif\'icia Universidade Cat\'olica do Paran\'a (PUCPR), Curitiba, Brazil, in 2001 and 2003, respectively.
+In 2008, he received his co-tutelage PhD degree in Computer Science from the Federal University of Minas Gerais (UFMG), Belo Horizonte, Brazil and the Universit\'e Paris-Est/Groupe ESIEE, Paris, France.
+He is an associate professor at the Computing Department (DECOM), Universidade Federal de Ouro Preto (UFOP), Ouro Preto, Brazil, since August 2008. 
+From June 2013 to May 2014 he has been on his sabbatical year at Institute of Computing, University of Campinas (UNICAMP), Campinas, Brazil, as a post-doc / collaborator researcher supported by FAPESP (grant 2013/4172-0).
+Currently, he is working as a permanent and collaborator professor at the Post-Graduate Program in Computer Science DECOM-UFOP and DCC-UFMG, respectively.
+
+His research interests include image processing, pattern recognition, computer vision, and information retrieval.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-chiachia}}]{Giovani Chiachia}  
+Giovani Chiachia is a post-doctorate researcher at University of Campinas, Brazil.
+His main research interest is to approach computer vision and other artificial intelligence tasks with brain-inspired machine learning techniques. 
+He received his B.Sc. (2005) and his M.S. (2009) degrees from São Paulo State University and his Ph.D. in Computer Science from the University of Campinas (2013).
+He held research scholar positions at the Fraunhofer Institute IIS and at Harvard University as part of his graduate work, and was awarded first place for the performance of his face recognition system in the IEEE Intl. Conf. on Biometrics (2013). 
+Beyond his research experience, Dr. Chiachia has a large experience in the IT industry, managing and being part of teams working on projects from a wide range of complexities and scales.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-pinto}}]{Allan da Silva Pinto} 
+Allan Pinto received the B.Sc. degree in Computer Science from University of São Paulo (USP), Brazil, in 2011, and the M.Sc. degree in Computer Science from University of Campinas (Unicamp), Brazil, in 2013. Currently, he is a Ph.D. Student, also in Computer Science, at Institute of Computing, Unicamp, Brazil. 
+
+His research focuses on the areas of image and video analysis, computer forensics, pattern recognition, and computer vision in general, with a particular interest in spoofing detection in biometric systems.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-schwartz}}]{William Robson Schwartz} 
+William Robson Schwartz received his Ph.D. degree in Computer Science from University of Maryland, College Park, USA. He received his B.Sc. and M.Sc. degrees in Computer Science from the Federal University of Parana, Curitiba, Brazil.
+He is currently a professor in the Department of Computer Science at the Federal University of Minas Gerais, Brazil.
+
+His research interests include computer vision, computer forensics, biometrics and image processing.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-pedrini}}]{Helio Pedrini} 
+Helio Pedrini received his Ph.D. degree in Electrical and Computer Engineering from Rensselaer Polytechnic Institute, Troy, NY, USA. 
+He received his M.Sc. degree in Electrical Engineering and his B.Sc. in Computer Science, both from the University of Campinas, Brazil. 
+He is currently a professor in the Institute of Computing at the University of Campinas, Brazil. 
+
+His research interests include image processing, computer vision, pattern recognition, machine learning, computer graphics, computational geometry.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-falcao}}]{Alexandre Xavier Falcão} 
+Alexandre Xavier Falcao is full professor at the Institute of Computing, University of Campinas, Campinas, SP, Brazil. 
+He received a B.Sc. in Electrical Engineering from the Federal University of Pernambuco, Recife, PE, Brazil, in 1988. He has worked in biomedical image processing, visualization and analysis since 1991. 
+In 1993, he received a M.Sc. in Electrical Engineering from the University of Campinas, Campinas, SP, Brazil. 
+During 1994-1996, he worked with the Medical Image Processing Group at the Department of Radiology, University of Pennsylvania, PA, USA, on interactive image segmentation for his doctorate. 
+He got his doctorate in Electrical Engineering from the University of Campinas in 1996. 
+In 1997, he worked in a project for Globo TV at a research center, CPqD-TELEBRAS in Campinas, developing methods for video quality assessment. 
+His experience as professor of Computer Science and Engineering started in 1998 at the University of Campinas. 
+
+His main research interests include image/video processing, visualization, and analysis; graph algorithms and dynamic programming; image annotation, organization, and retrieval; machine learning and pattern recognition; and image analysis applications in Biology, Medicine, Biometrics, Geology, and Agriculture.
+\end{IEEEbiography}
+
+%\vspace{-18pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{photo-rocha}}]{Alexandre de Rezende Rocha}
+Anderson de Rezende Rocha received his B.Sc (Computer Science) degree from Federal University of Lavras (UFLA), Brazil in 2003. He received his M.S. and Ph.D. (Computer Science) from University of Campinas (Unicamp), Brazil, in 2006 and 2009, respectively. 
+Currently, he is an assistant professor in the Institute of Computing, Unicamp, Brazil. 
+
+His main interests include digital forensics, reasoning for complex data, and machine  intelligence. 
+He has actively worked as a program committee member in several important Computer Vision, Pattern Recognition, and Digital Forensics events. 
+He is an associate editor of the Elsevier Journal of Visual Communication and Image Representation (JVCI) and a Leading Guest Editor for EURASIP/Springer Journal on Image and Video Processing 
+(JIVP) and IEEE Transactions on Information Forensics and Security (T.IFS). 
+He is an affiliate member of the Brazilian Academy of Sciences (ABC) and the Brazilian Academy of Forensics Sciences (ABCF). 
+He is also a Microsoft Research Faculty Fellow and a former member of the IEEE Information Forensics and Security Technical Committee (IFS-TC).
+\end{IEEEbiography}
+%\balance
+
+\end{document}

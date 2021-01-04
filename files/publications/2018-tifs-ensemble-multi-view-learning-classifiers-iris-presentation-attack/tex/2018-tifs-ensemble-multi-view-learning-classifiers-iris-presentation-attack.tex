@@ -1,0 +1,191 @@
+\documentclass[journal,twocolumn]{IEEEtran}
+
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{./graphics/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{../graphics/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{fixltx2e}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{pdflscape} % for landscape pages
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[flushleft,referable]{threeparttablex}
+\usepackage{color}
+\usepackage{flushend}
+\usepackage{tablefootnote}
+\usepackage{enumitem} % alphabet enumerations
+\usepackage{todonotes} % https://tex.stackexchange.com/questions/9796/how-to-add-todo-notes
+\usepackage{dblfloatfix} % https://tex.stackexchange.com/questions/3527/put-a-table-at-the-bottom-of-a-page
+\usepackage{tabularx} % line breaks inside table cells
+\usepackage{colortbl}
+% \usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage[bottom]{footmisc}
+\usepackage{footnote}
+%\usepackage{stfloats}
+
+
+\newcommand{\ie}{{\it i.e.},~}
+\newcommand{\eg}{{\it e.g.},~}
+\newcommand{\etal}{{\it et al.}~}
+\providecommand{\newtext}[1]{{\protect\color{blue}{#1}}}
+
+\usepackage[normalem]{ulem}
+\newcommand{\del}[1]{{\color{red}\sout{#1}}}
+\newcommand{\mybox}[2]{{\color{#1}\fbox{\normalcolor#2}}}
+
+
+%\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+%% -- commands for colored table
+\colorlet{tableheadcolor}{blue!25} % Table header colour = 25% blue
+\newcommand{\headcol}{\rowcolor{tableheadcolor}} %
+\colorlet{tablerowcolor}{blue!10} % Table row separator colour = 10% blue
+\newcommand{\rowcol}{\rowcolor{tablerowcolor}} %
+% Command \topline consists of a (slightly modified) \toprule followed by a \heavyrule rule of colour tableheadcolor (hence, 2 separate rules)
+\newcommand{\topline}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+    \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}}
+% Command \midline consists of 3 rules (top colour tableheadcolor, middle colour black, bottom colour white)
+\newcommand{\midline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+    \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\hline}
+% Command \rowmidlinecw consists of 3 rules (top colour tablerowcolor, middle colour black, bottom colour white)
+\newcommand{\rowmidlinecw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+    \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}}
+% Command \rowmidlinewc consists of 3 rules (top colour white, middle colour black, bottom colour tablerowcolor)
+\newcommand{\rowmidlinewc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+    \arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}}
+% Command \rowmidlinew consists of 1 white rule
+\newcommand{\rowmidlinew}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}}
+% Command \rowmidlinec consists of 1 tablerowcolor rule
+\newcommand{\rowmidlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}}
+% Command \bottomline consists of 2 rules (top colour
+\newcommand{\bottomline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+\newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+    \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+
+
+% -- fix the problem with footnotes above the figures
+% \feetbelowfloat
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title/author section
+\title{Ensemble of Multi-View Learning Classifiers for Cross-Domain Iris Presentation Attack Detection\\
+%\textcolor{red}{\normalsize (old title) Ensemble of Convolutional Neural Networks for Cross-Domain Iris Presentation Attack Detection}
+}
+
+
+\author{Andrey Kuehlkamp,~\IEEEmembership{Student Member,~IEEE,}
+        Allan Pinto,~\IEEEmembership{Student Member,~IEEE,}\\
+        Anderson Rocha,~\IEEEmembership{Senior Member,~IEEE},
+        Kevin W. Bowyer,~\IEEEmembership{Fellow,~IEEE,}
+        Adam Czajka,~\IEEEmembership{Senior Member,~IEEE}% <-this % stops a space
+\thanks{A. Kuehlkamp, K. Bowyer and A. Czajka  are with the University of Notre Dame, USA. E-mail: \{akuehlka,kwb,aczajka\}@nd.edu}% <-this % stops a space
+\thanks{A. Pinto and A. Rocha are with the Institute of Computing, University of Campinas (Unicamp), Av. Albert Einstein, 1251, Campinas, SP, Brazil, 13083-852. E-mail: \{allan.pinto,anderson.rocha\}@ic.unicamp.br.}% <-this % stops a space
+\thanks{Manuscript received ...; revised ...}}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The paper headers
+\markboth{Draft}{Draft}
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keywords
+%\begin{IEEEkeywords}
+%\end{IEEEkeywords}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDICS
+\ifCLASSOPTIONpeerreview
+\begin{center} \bfseries EDICS Category: BIO-MODA-IRI\end{center}
+\fi
+
+\IEEEpeerreviewmaketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main body starts here
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Introduction}
+\input{related_work}
+\input{proposed_method}
+\input{experimental_results}
+\input{conclusion}
+
+\section{Acknowledgement}
+\label{sec:ack}
+This research was partially supported by the Brazilian Coordination for the Improvement of Higher Education Personnel (CAPES) through grants BEX 12976/13-0 and DeepEyes as well as by the S\~{a}o Paulo Research Foundation (FAPESP) through the D\'{e}j\`{a}Vu  research project (Grant \#2017/12646-3).
+
+% references section
+\bibliographystyle{IEEEtran}
+\bibliography{iris-pad}
+
+% biography section
+% \begin{IEEEbiography}
+% [{\includegraphics[height=1.2in,clip,keepaspectratio]{andrey.jpg}}]
+% {Andrey Kuehlkamp} is currently a Ph.D. candidate with the Computer Vision Research Lab at the University of Notre Dame. He received his B.Sc. in Computer Science from the University of West Santa Catarina, Videira, Brazil, and his M.Sc. in Applied Computing from the University of Itajai Valley, Itajai, Brazil. His current professional interests are iris biometrics, computer vision and machine learning.
+% \end{IEEEbiography}
+
+%\begin{IEEEbiography}[{\includegraphics[height=1.2in,clip,keepaspectratio]{aczajka}}]{Adam Czajka} Adam Czajka is a Research Assistant Professor in the Department of Computer Science and Engineering in the College of Engineering here at the University of Notre Dame. He received his M.Sc. in Computer Control Systems and his Ph.D. in Biometrics from Warsaw University of Technology (WUT), Poland (both with honors). He is also an Assistant Professor with the Research and Academic Computer Network -- national research institute (NASK), Poland. His scientific interests include biometrics and security, computer vision, and machine learning. Before coming to Notre Dame, Dr. Czajka was the Chair of the Biometrics and Machine Learning Laboratory at the Institute of Control and Computation Engineering at WUT, the Head of the Postgraduate Studies on Security and Biometrics, the Vice Chair of the NASK Biometrics Laboratory, and a member of the NASK Research Council. He is a Senior Member of the IEEE, the Chair of the Polish Standardization Committee on Biometrics, and an active member of the European Association for Biometrics. He serves as Associate Editor in the IEEE Access, an Editorial Board member in the IET Biometrics, as well as the Program Committee member and reviewer for various conferences and journals in biometrics and security, including IEEE T-IFS, IET Biometrics and Elsevier Pattern Recognition Letters.\end{IEEEbiography}
+
+%\begin{IEEEbiography}[{\includegraphics[height=1.2in,clip,keepaspectratio]{kwb}}]{Kevin W. Bowyer} is the Schubmehl-Prein Professor and Chair of the Department of Computer Science and Engineering at the University of Notre Dame. Dr. Bowyer's research interests range broadly across computer vision and pattern recognition, including biometrics, data mining and classifier ensembles. Dr. Bowyer received a 2014 Technical Achievement Award from the IEEE Computer Society, ``For pioneering contributions to the science and engineering of biometrics'', is a Fellow of the IEEE ``for contributions to algorithms for recognizing objects in images'', a Fellow of the IAPR, ``for contributions to computer vision, pattern recognition and biometrics'', and a Golden Core Member of the IEEE Computer Society. He served as Editor-in-Chief of the IEEE TPAMI, and also served as EIC of the IEEE Biometrics Compendium, and is currently on the editorial board of IEEE Access. Dr. Bowyer served as General Chair of the 2015 and the 2017 IEEE FG Conf., General Chair of the 2015 IEEE BTAS Conf., and Research and Innovation Session Chair for Biometrics in 2014, 2015 and 2016. His Handbook of Iris Recognition, edited with Mark Burge, is now in its Second Edition. Dr. Bowyer has made substantial contributions in the areas of iris recognition, face recognition, and multi-modal and cross-sensor biometrics.\end{IEEEbiography}
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+\end{document}
+
+

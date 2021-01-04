@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: 2018-tip-image-provenance-analysis-at-scale.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibliography.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 62 entries,
+            4087 wiz_defined-function locations,
+            1149 strings with 18907 characters,
+and the built_in function-call counts, 45546 in all, are:
+= -- 3630
+> -- 1190
+< -- 358
++ -- 637
+- -- 220
+* -- 2155
+:= -- 6805
+add.period$ -- 124
+call.type$ -- 62
+change.case$ -- 61
+chr.to.int$ -- 789
+cite$ -- 62
+duplicate$ -- 3309
+empty$ -- 3704
+format.name$ -- 268
+if$ -- 10638
+int.to.chr$ -- 0
+int.to.str$ -- 62
+missing$ -- 619
+newline$ -- 209
+num.names$ -- 62
+pop$ -- 1437
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 3562
+stack$ -- 0
+substring$ -- 1897
+swap$ -- 2647
+text.length$ -- 95
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 62
+warning$ -- 0
+while$ -- 198
+width$ -- 64
+write$ -- 612

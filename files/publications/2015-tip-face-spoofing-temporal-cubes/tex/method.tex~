@@ -1,0 +1,187 @@
+\section{Proposed Method}\label{sec:method}
+
+In this section, we introduce a method for detecting different forms of face spoofing attacks. We model the spoofing attack detection problem as a binary classification. The method is a three-step procedure: low-level descriptor extraction, mid-level descriptor extraction, and classification whereby descriptors extracted from a training set are presented to machine leaning algorithms to find a suitable classification model which will decide whether a new biometric sample is a synthetic sample. The steps of the proposed approach are illustrated in Fig.~\ref{fig:method_overview}, which are explained in detail in the following sections. %\rv{(padronizar o uso do termo Fig. ou Figure ao longo do texto)}
+%%
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=0.48\textwidth]{method_overview_v1.pdf}
+%\caption{Main steps of the proposed method. Given a training set consisting of valid video accesses and attempted attack videos, and also a testing video, we first extract a noise signature from every training video, generating a noise residual video, and calculate its spectrum video. In sequence, we extract time-spectral descriptors from spectrum videos (low-level representation), which are used to generated a visual codebook. With the visual codebook at hand, we transform the low-level descriptors in time-spectral visual word descriptors (mid-level representation). Finally, these mid-level descriptors are used to find parameters of the classification model, which are used for predicting whether a given testing video is an attempted attack.}
+%\label{fig:method_overview}
+%\end{figure}
+
+The algorithm was designed based on the fact that synthetic biometric samples contain noise and artifacts generated during their manufacture and recapture that are different of any pattern found in real biometric samples. According to Tan et al.~\cite{Tan:ECCV:2010} and M\"{a}\"{a}tt\"{a} et al.~\cite{Maatta:IJCB:2011}, there is a deterioration of the facial information and consequently a loss of some high frequency components during manufacture of photographs to be used in spoofing attacks. In our prior work~\cite{Pinto:SIBGRAPI:2012}, we highlighted the fact that there is a significant increase of the low frequency components due to the blurring effect added during the recapture process of the biometric sample displayed in tablets, smartphones and laptop screens. Besides the blurring effect, other artifacts are added such as distortions, flickering, defocus, \redmark{moiré}, and banding effect~\cite{Beach:PP:2008}. These facts motivated us to propose a solution that takes advantage of the noise and artifacts contained on such fake biometric samples, which heretofore we refer to as a noise signature. 
+
+To quantify the different artifacts added in the fake samples, we perform a Fourier analysis of the noise signal. Fourier analysis is an important tool that allows signals to be assessed in the frequency domain by calculating Fourier spectrum from signal and examining information encoded in the frequency, phase and amplitude of the component sinusoids~\cite{Smith:SEG:1997}. In this paper, we use Fourier spectrum to quantify the artifacts:
+%
+\begin{itemize}
+	\item \textit{blurring artifact and defocus:} In both the production and recapture processes, inevitably we have a decrease in the details of biometric samples due to re-quantization of the original signal. Consequently, this reduction of details is reflected in the increase of low frequency components that can be observed in the Fourier domain;
+	
+	\item \textit{flickering effect:} It corresponds to the horizontal and vertical lines equally spaced that appear during the recapture process of the samples shown to the acquisition sensor with the display device. When this artifact appears in biometric samples, there are peak lines at abscissa and ordinate axes of the Fourier spectrum when the display device is aligned with the acquisition sensor;
+	
+	\item \textit{Moir\'{e} pattern and banding effect:} They are irregular patterns that appear when a display device is used to perform an attempted attack. As a result, we also have the appearance of peaks in different locations in the Fourier spectrum depending on the \redmark{frequency and direction of the sinusoid in the spatial domain}~\cite{Smith:SEG:1997}.
+	
+	%\ap{\scriptsize{This \href{https://www.cs.unm.edu/~brayer/vision/fourier.html}{link} shows some intuitive image examples and their respective magnitude spectrum. In the second figure we have a image that present the moiré pattern and so the above explanation about Moiré pattern was inspired in the such explanation. But, I do not find an fake image with this effect on databases used in this articles. Therefore my question is whether we should keep the item above because we do not have a example to show.}}
+\end{itemize}
+
+The novelty of our solution is the proposition of a two-tier low and mid-level characterization scheme, called time-spectral visual words, able to capture patterns present in such noise signatures useful to reveal spoofing attacks. For this, we extract temporal-spectral samples from the noise signature transformed to the frequency domain and we create a mid-level representation for them using the concept of visual codebooks~\cite{Sivic:ICCV:2003,Avila:ICIP:2011}. Visual codebooks are a method for constructing mid-level representations widely used in several applications in pattern recognition and computer vision, such as object recognition~\cite{Vigo:ICPR:2010}, gesture recognition~\cite{Vela:ICPR:2012}, human action categorization~\cite{Burghouts:PRL:2013}, and information retrieval~\cite{Penatti:PR:2014}. However, unlike the proposed methods, we neither obtain the visual information from objects of the scene, nor from its raw pixels, but rather from the noise signal present in the videos captured by the acquisition biometric sensor. In the following sections, we explain in details the steps of the proposed method. %Fig.~\ref{fig:method_overview} summarizes the steps of the proposed method, which are explained in detail in the following sections.
+
+%The motivation to design an algorithm able to incorporate temporal information lies on the fact that recent works has highlighted the such information to detect spoofing attacks~\cite{Schwartz:IJCB:2011,Pinto:SIBGRAPI:2012,Komulainen:ACCV:2012,Pereira:JIVP:2014}. In our preview works~\cite{Schwartz:IJCB:2011,Pinto:SIBGRAPI:2012}, the temporal information was characterized of a simple way, based on feature fusion~\cite{Schwartz:IJCB:2011} and visual rhythm concept~\cite{Pinto:SIBGRAPI:2012}.
+
+%Unlike the method proposed by Pinto et al.~\cite{Pinto:SIBGRAPI:2012}, where the temporal information was characterized in a simple way using the concept of visual rhythm that consists in the concatenation of regions of interest of the frames from the video under analysis, the approach proposed in this paper is more effective because it considers small temporal slices of the videos, improving the robustness to the inherent variations to the noise signal, than considering the whole frame. In~\cite{Pinto:SIBGRAPI:2012}, only the temporal information present in the central region of the frame was captured. 
+
+%\todo{O paragrafo acima estah confuso, qual eh o objetivo dele, dizer que uma representacao local eh melhor que uma representacao global? Se sim, deixar isso claro ja no inicio do paragrafo.}
+
+%For this, we perform a spectrum analysis of the noise signal transformed to the frequency domain by Discrete Fourier Transform. We model the detection problem as a binary classification problem and we use the Bag-of-Visual-Words model to generate the feature vectors.
+%Using the Bag-of-Visual-Words model we intend to build an algorithm able of dealing with the problem of the diversity of attacks, since there are several techniques to perform an attempted attack, and the problem of generalization, that is, we are interested in building a detection algorithm that even adjusted with data from a database $X$ has good effectiveness in detecting attacks whose data is from the database $Y$. 
+
+%We will show in the experiments results with cross-dataset and we consider the following types of spoofing attacks: (1) photo-based attack in which the impostor user presents the photographs using her hands or a support; (2) mobile attacks where the impostor user displays photographs and videos in an iPhone; (3) high-definition attacks where the impostor user displays photographs and videos of high resolution produced with a digital camera using an iPad; (4) video-based attacks where the impostor user displays videos produced with digital cameras with Full HD quality using several monitors also with Full HD quality; and (5) mask-based attacks where the impostor use the static mask.
+
+%We can categorize these synthetic biometric samples into two groups: photo-based fake biometric samples and video-based fake biometric samples. Both types of synthetic biometric samples have characteristics that differ from real biometric samples. During the production of photograph-based fake samples there is a deterioration of facial information and consequently a loss of some high frequency components, beyond the addition of print artifacts. In the case of video-based attacks in which a photo or video is displayed to the biometric sensor using a monitor or other display device, there is a significant increase of the low frequency components due to the effect of blurring. Besides the effect of blurring, other artifacts are added on recapture process such as distortions, flickering, mooring, and banding effect~\cite{Beach:PP:2008}. All these artifacts are references as noise and our solution takes advantage of the noise signature contained on the fake biometric samples.
+
+\subsection{Low-Level Descriptor Extraction}
+
+Extraction of low-level features is one of the most important tasks for spoofing detection. It should be able to extract patterns that reveal an attack without incorporating unnecessary information that commonly adds some artifacts to the patterns to be classified. In our previous work~\cite{Pinto:SIBGRAPI:2012}, we found that the noise signal is an important source to achieve this goal. Furthermore, when working with noise signal and discarding the video content, we deal with a major problem using texture-based information, which is the negative impact of the illumination variation. %In this section, we present the details of the low-level feature extraction of a video under analysis.
+
+Low-level representation of the videos is computed by means of the spectrum analysis of the noise signal in the frequency domain. To isolate the noise signal of a given video $V$, we filter a copy of $V$ using a Gaussian filter with mean $\mu$, standard deviation $\sigma$, and kernel size $k \times k$ to remove the high frequency components, generating a filtered video. Then, we perform a subtraction operation between the input video and its filtered version, generating a new video called Noise Residual Video ($V_{NR}$), as formalized in Equation~\ref{eq:ruido}.
+\begin{equation}
+V_{NR}^{(t)} = V^{(t)} - h(V^{(t)}) \quad \forall \textrm{ \textit{t} } \in \mathit{T} =\{1, 2, \ldots, t\},
+\label{eq:ruido}
+\end{equation}
+\noindent where $V^{(t)} \in \mathbb{N}^2$ is the $t$-th frame of $V$ and $h$ is a filter whose impulse response is a Gaussian function.
+
+Analysis of the noise pattern and possible artifacts contained in the biometric samples is performed by applying the 2D Discrete Fourier Transform to each frame of the $V_{\text{NR}}$ using Equation~\ref{eq:dft}. In this work, we evaluate two important characteristics of the noise signal in the frequency domain, the magnitude and phase of the signal. The analysis of these two characteristics is performed by calculating the magnitude spectrum (Equation~\ref{eq:mag_spectrum}) and phase spectrum (Equation~\ref{eq:phase_spectrum}), with origin at the center of the frame. In both cases, the result is a Fourier spectrum video.
+\begin{align}
+\mathcal{F}{(V_{\text{NR}}(x,y))} &\equiv F(v, u) \\
+F(v, u) &= \sum_{x=0}^{M-1}{\sum_{y=0}^{N-1}{V_{\text{NR}}(x,y)e^{-j2\pi[(vx/M) + (uy/N)]}}} \label{eq:dft} \\
+|{F}{(v, u)}| &= \sqrt{\mathcal{R}{(v, u)}^{2} + \mathcal{I}{(v, u)}^{2}} \\
+V_{\text{MS}}{(v, u)} &= \log(1 + |{F}{(v, u)}|) \label{eq:mag_spectrum} \\
+V_{\text{PS}}(v, u) &= \arctan{\left(\frac{\mathcal{I}{(v, u)}}{\mathcal{R}{(v, u)}}\right)} \label{eq:phase_spectrum}
+\end{align}
+
+From the Fourier spectrum video, we need to extract spectral and temporal information relevant to the spoofing attack detection. In the case of the spectral information, we need to capture peaks present in the central region caused by artifacts that reduce some details in the scene (e.g., skin marking, edge information) such as blurring effect, defocus, and printing artifacts and peaks present in the peripheral region of the frame caused mainly by artifacts such as the banding effect and moire pattern, which appear during the recapture of the biometric information in time of the attack. \redmark{In an attempt to show the temporal disturbances added to the biometric samples during attacks, we extract the first ten consecutive frames of an attack video and a valid video for the same client, and calculate their respective magnitudes spectra from the residual noise video  (Fig.~\ref{fig:tempartifacts}). In turn, Fig.~\ref{fig:artifacts} shows examples in which we have frames extracted from valid access videos (a) and spoof attack videos (b-c). We can see, at least, two types of effects in the fake samples: (i) blurring, characterized by the loss of details in the face region (b-c); and (ii) flickering effects, characterized by the appearance of collinear points (b) and horizontal traces (c), both in the background.}
+
+The instability in the movement during the presentation of the fake sample to the acquisition sensor can favor the appearance and disappearance of an effect or another. We are not proposing a method that captures each of the artifacts separately. We believe that the presence of one or more artifacts cause disturbances in the frequency components in the Fourier domain and it is this disturbance that the proposed method is intended to describe both in space and time. 
+%
+\begin{figure*}[!ht]
+\centering
+\subfloat[Magnitude spectra calculated from a valid access video.]{\includegraphics[width=0.75\textwidth]{./figures/temporal/client020_session01_webcam_authenticate_controlled_2.png}}\hspace{1.0mm}
+%
+\subfloat[Magnitude spectra calculated from a spoof attack video.]{\includegraphics[width=0.75\textwidth]{./figures/temporal/attack_mobile_client020_session01_mobile_video_controlled.png}}
+\caption{Examples of the first ten magnitude spectra calculated from a \textbf{valid access} video (a) and a \textbf{spoof attack} video (b).}
+\label{fig:tempartifacts}
+\end{figure*}
+%
+\begin{figure*}[!ht]
+\centering
+\subfloat[Examples of frames extracted from valid access videos for two users on Replay-Attack dataset.]{\includegraphics[width=0.32\textwidth]{./figures/artifacts/client026_session01_webcam_authenticate_controlled_1_000.png}\includegraphics[width=0.32\textwidth]{./figures/artifacts/client020_session01_webcam_authenticate_controlled_1_000.png}}\\
+%
+\subfloat[Example of frame extracted from a spoof attack video.]{\includegraphics[width=0.32\textwidth]{./figures/artifacts/attack_highdef_client026_session01_highdef_video_controlled_000.png}}\hspace{0.5mm}
+\subfloat[Example of frame extracted from a spoof attack video.]{\includegraphics[width=0.32\textwidth]{./figures/artifacts/attack_mobile_client020_session01_mobile_video_controlled_000.png}}
+\caption{Examples of video frames of \textbf{valid access} videos (a) and \textbf{spoof attack} videos (b-c). Fig.\ref{fig:artifacts}(c)~and~(d) illustrate examples of blurring effect, characterized by the loss of details in the face region  and Fig.\ref{fig:artifacts}(b)~and~(c) show flickering effects, characterized by the appearance of collinear points (b) and horizontal traces (c), both in the background.}
+\label{fig:artifacts}
+\end{figure*}
+
+%%Fig.~\ref{fig:highdef_video_adverse} shows four consecutively frames (Fig.~\ref{fig:highdef_video_adverse}(a-d)) and their respective magnitude and phase spectrum (Fig.~\ref{fig:highdef_video_adverse}(e-g)), where we can see such disturbances in frequency components.
+%%
+%\begin{figure*}[!ht]
+%\centering
+%\subfloat[Mobile Video Attack]{\includegraphics[width=0.175\textwidth]{./samples/blur_color_frame}}\hspace{1mm}
+%\subfloat[Mobile Photo Attack]{\includegraphics[width=0.175\textwidth]{./samples/flick_and_blur_frame}}\hspace{1mm}
+%\subfloat[High Definition Video Attack]{\includegraphics[width=0.175\textwidth]{./samples/low_qualy}}\hspace{1mm}
+%\subfloat[High Definition Photo Attack]{\includegraphics[width=0.175\textwidth]{./samples/printing}}\\
+%%
+%\subfloat[Mobile Video Attack]{\includegraphics[width=0.175\textwidth]{./samples/blur_color_surface}}\hspace{1mm}
+%\subfloat[Mobile Photo Attack]{\includegraphics[width=0.175\textwidth]{./samples/flick_and_blur_surface}}\hspace{1mm}
+%\subfloat[High Definition Video Attack]{\includegraphics[width=0.175\textwidth]{./samples/low_qualy_surface}}\hspace{1mm}
+%\subfloat[High Definition Photo Attack]{\includegraphics[width=0.175\textwidth]{./samples/printing_surface}}\\
+%\caption{Examples of spoofing attack videos from Replay-Attack benchmark with different artifacts and their their respective Magnitude (top images) and Phase Spectrum (bottom images) (e-h). }
+%\label{fig:artifact_examples}
+%\end{figure*}
+
+
+%
+%\begin{figure*}[!ht]
+%\centering
+%\subfloat[Frame 0]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/000_frame}}\hspace{1mm}
+%\subfloat[Frame 1]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/001_frame}}\hspace{1mm}
+%\subfloat[Frame 2]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/002_frame}}\hspace{1mm}
+%\subfloat[Frame 3]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/003_frame}}\\
+%%
+%\subfloat[ ]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/000_surface}}\hspace{1mm}
+%\subfloat[ ]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/001_surface}}\hspace{1mm}
+%\subfloat[ ]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/002_surface}}\hspace{1mm}
+%\subfloat[ ]{\includegraphics[width=0.175\textwidth]{./samples/highdef_video_adverse/003_surface}}
+%\caption{Examples of consecutive videos frames of \textbf{attack} videos from Replay-Attack benchmark  (a-d) and their respective Magnitude (top images) and Phase Spectrum (bottom images) (e-h). Note that the presence of disturbances in the frequency components in the Fourier domain even in consecutive frames. In order to improve the visualization of the Fourier spectrum, the video was converted to gray scale, but the proposed method analyzes the three bands separately in search of evidences of an attempted attack.}
+%\label{fig:highdef_video_adverse}
+%\end{figure*}
+%}
+
+Due to the dynamics involved in the appearance of artifacts and noise in the synthetic biometric samples,  in addition to the spectral information, the temporal information becomes important to detect spoofing attacks. Therefore, we design a feature descriptor that gathers temporal and spectral information from an input video. For this, we extract $n$ temporal cubes of size of $w \times h \times t$ from the Fourier spectrum video, that is, blocks of size $w \times h$ of $t$ sequential frames. The idea of temporal cubes has been somewhat explored to quantify temporal information in other tasks in computer vision, such as action and gesture recognition~\cite{Klaeser:BMVA:2008,Alon:TPAMI:2009}, information retrieval~\cite{Ren:PR:2009}, among others. In all cases, it always boils down to designing important discriminative features for capturing the event of interest. In this paper, we design new ideas for spoofing detection.
+%William: essa parte estah perdida aqui, eu colocaria no paragrafo antes do inicio da secao III.A. Allan: Creio que o Prof. teve essa sensacao porque a frase não estava bem formulada. Por favor, veja se esta ok agora.
+
+
+Extracted temporal cubes are hereinafter named as time-spectral features, which contain information about the temporal behavior of the frequency components that form the input video. We also evaluate whether the extraction of the time-spectral features considering only the center region of the frames is more effective than the whole frame, as well as the peaks caused by the artifact produced by the banding effect can reside, or not, in a region near the center of the frame and far from peripheral region of the frame.
+
+To find proper descriptions of the time-spectral feature, we calculate a measure on top of it by means of modeling a function $f: \mathbb{R}^{w \times h \times t} \rightarrow \mathbb{R}^{t}$ that gives us behavioral characteristics of the spectral information that reveal disturbances in the signal. {The computation of the measure over temporal cubes can be performed on each frame separately, hereinafter referred to spatial measures, or between consecutive frames from cubes, hereinafter referred to spatio-temporal measures. Examples of spatial measures that can be used are energy and entropy of the signal, which quantify the signal size and information quantity, respectively. As examples of spatial-temporal measures we can mention the correlation and mutual information, which are applied to measure dependence between consecutive frames. At the end of this process, we have a set of $n$ time-spectral descriptors of $t$ dimensions, for each video. Note that as spatio-temporal measures are applied on consecutive frames this process yield $n$ time-spectral descriptors of $t-1$ dimensions when applied.}
+
+\subsection{Mid-Level Descriptor Extraction}
+
+To find a robust representation for the low-level feature descriptors, with less sensitivity to the intra- and extra-class variations, we use the Bag-of-Visual-Word (BoVW) model~\cite{Sivic:ICCV:2003}. We use the BoVW model to map the low-level features onto a more discriminative mid-level representation. Methods based on the BoVW model can be understood in the following steps: codebook generation, coding, and pooling. All three steps are explained in detail as follows.
+
+%\vspace{0.1cm}
+%\noindent\textbf{Codebook Generation.}
+\subsubsection{Visual Codebook Generation}
+
+The generation of the visual codebook consists in the selection of time-spectral descriptors more frequent and representative considering all descriptors extracted from training videos. The selected descriptors, called time-spectral visual words, form the visual codebook, and the selection can be performed using two strategies: (1) random selection, whereby all descriptors are pooled and $m$ visual words are randomly chosen using a uniform distribution; or (2) selection via clustering (e.g., $k$-means) whereby all descriptors are submitted to a clustering process and the $m$ centroids found by the algorithm are used to form the visual codebook. In both cases, we end up with a single visual codebook, which is used to encode the low-level time-spectral descriptors from videos.
+
+Instead of pooling all descriptors extracted from videos into a training set to build a single visual codebook, we can build class-based visual codebooks. When creating a single codebook, we consider the time-spectral descriptors extracted from both valid access and attempted attack videos in the training dataset and find a single visual codebook for them, as described above with no class distinction whatsoever. However, when creating class-based visual codebooks, we consider the use of valid access and attempted attack video descriptors separately in order to find codebooks experts in each class. For each class-based codebook, we use same procedures described above for a single visual codebook creation. With this, we end up with two expert visual codebooks that are concatenated to create the final combined codebook.
+
+\subsubsection{Coding}
+The coding process performs a pointwise transformation of the low-level descriptors into another space representation, better adapted to the problem to be solved~\cite{Boureau:CVPR:2010}. Although the more usual techniques are the hard and soft-assignments, there are several strategies for coding. Given a visual codebook and a low-level descriptor, the hard assignment transforms such descriptor into a binary vector with only one nonzero coefficient that represents the visual word closest to it, that is, the most similar visual word to the descriptor under transformation. The soft-assignment~\cite{Gemert:ECCV:2008} gives a real valued vector that represents the descriptor as a linear combination of the visual words of the codebook, whose coefficients give an associativity degree between the descriptor and the visual words of the codebook~\cite{Liu:ICCV:2011}. In this paper, we evaluate these two strategies for coding the low-level descriptors.
+
+We formalize the hard and soft-assignment in Equations~\ref{eq:hard-assignment} and~\ref{eq:soft-assignment}, respectively. Let $x_{i} \in \mathbb{R}^{t}$ be the $i$-th low-level descriptors and $b_{j} \in \mathbb{R}^{t}$ be the $j$-th visual word that composes the codebook $\mathbf{B} \in \mathbb{R}^{t \times m}$, with $m$ visual words. The coding process can be understood as a function $f: \mathbb{R}^{t} \rightarrow \mathbb{R}^{m}$ that transforms the low-level feature descriptor $x_{i}$ into a mid-level feature descriptor. In this step, all time-spectral descriptors are coded and at the end of this process, we have a set of $n$ mid-level feature descriptors, for each video.
+%
+\begin{eqnarray}
+	u_{i}^{(j)} = \left\{
+	\begin{array}{ll}
+		1 & \quad \text{if} \quad j = \argmin{k \in \{1,\cdots,m\}}||\mathbf{x}_{i} - \mathbf{b}_{k} ||_{2}^{2} \\
+		0 & \quad \text{otherwise.}
+	\end{array} \right.
+\label{eq:hard-assignment}
+\end{eqnarray}
+\begin{eqnarray}
+	u_{i}^{(j)} = \frac{K_{\sigma}(d(\mathbf{x}_{i},\mathbf{b}_{j}))}{\sum_{k=1}^{m}{K_{\sigma}(d(\mathbf{x}_{i},\mathbf{b}_{k}))}} \qquad \forall \textrm{ \textit{j} } \in \{1, 2, \ldots, m\},
+\label{eq:soft-assignment}
+\end{eqnarray}
+\noindent where $u_{i} \in \mathbb{R}^{m}$ is the result of the coding of the descriptor $x_{i}$, $d(\mathbf{x}_{i},\mathbf{b}_{j})$ is the Euclidean distance between the descriptor $x_{i}$ and $j$-th visual word of $\mathbf{B}$ and $K_{\sigma}$ is a Gaussian kernel with mean $\mu$ and sigma $\sigma$. Gaussian kernel is used to smooth the local neighborhood of a given low-level descriptor by defining a similarity degree between low-level descriptors and their neighborhood~\cite{Gemert:ECCV:2008}.
+
+\subsubsection{Pooling}
+The pooling process aims at summarizing the information contained in the set of $n$ mid-level feature descriptors extracted from an input video into only one feature descriptor to obtain a final representation for it. In the literature, we have two common techniques to do that, known as sum-pooling (Equation~\ref{eq:sum_pooling}) and max-pooling (Equation~\ref{eq:max_pooling}). In this paper, we evaluate these two strategies, as well.
+%
+%Considering the case of mid-level feature descriptors generated using the hard-assignment technique, the max-pooling gives us the information of which word of the visual codebook is present in the set of mid-level feature descriptor assigned to an input video. The sum-pooling technique gives the information of how many times a word in the dictionary is present in the set of mid-level feature descriptor extracted from an input video~\cite{Liu:ICCV:2011}. 
+%
+%When the mid-level feature descriptors are generated using the soft-assignment technique, the max-pooling gives the maximum associativity degree between the visual words of the visual codebook and an input video. Sum-pooling does not make sense when assigned with the soft-assignment technique and, therefore, we do not explore such combination. %in this work.
+%
+\begin{eqnarray}
+	v_{i}^{(j)} = \sum_{i=1}^{n}{u_{i}^{(j)}} \quad \forall \textrm{ \textit{j} } \in \{1, 2, \ldots, m\}
+\label{eq:sum_pooling}
+\end{eqnarray}
+%
+\begin{eqnarray}
+	v_{i}^{(j)} = \mathtt{max}_{i} u_{i}^{(j)} \quad \forall \textrm{ \textit{j} } \in \{1, 2, \ldots, m\}
+\label{eq:max_pooling}
+\end{eqnarray}
+%%
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=0.48\textwidth]{coding_pooling_process.pdf}
+%\caption{}
+%\label{fig:coding_pooling_process}
+%\end{figure}
+
+\subsection{Classification}
+After finding a new space representation for the videos in the database, we use machine learning algorithms for constructing a binary classification model to decide whether a sample is an attempted attack or a valid access. The evaluation of different machine learning algorithms is important since the effectiveness of the algorithm depends on the quality of the data used to fit the classification model. In this paper, we evaluate the Partial Least Square (PLS)~\cite{Hoskuldsson:JC:1988} and Support Vector Machine (SVM)~\cite{Cortes:ML:1995} algorithms.
+
+%The PLS algorithm is a versatile data analysis tool applied in several research areas such as mathematics, economics, and computer science. PLS algorithm can be used in regression analysis, data visualization, dimensionality reduction, and data classification tasks. Similar to PCA~\cite{pearson1901lap}, the PLS is based on the linear transformation of the feature vectors to a new space formed by a small number orthogonal projection vectors. However, differently from PCA, the PLS projection vectors are chosen to maximize the covariance of the latent variables and the labels assigned to feature vectors~\cite{Schwartz:ICCV:2009}.
+%
+%SVM algorithm is a powerful state-of-the-art machine learning technique in many tasks of pattern recognition and computer vision. The SVM operation is based on the projection of the original space of the input feature vectors onto a higher dimensional feature space in order to find an optimal hyperplane that separates the input feature vectors into classes. SVM aims at finding the maximum margin hyperplane that separates two classes of interest. The found hyperplane can be represented as a linear combination of the input feature vectors, called support vectors, and the decision function to classify new feature vectors involves dot products between some input feature vectors. Therefore, SVM can find a separating hyperplane in the feature space and classify new feature vectors in that space without ever representing the space explicitly by means of a kernel function, which plays the role of the dot product in the feature space, avoiding explicit computations in the high dimensional feature space~\cite{James:STS:2013}.

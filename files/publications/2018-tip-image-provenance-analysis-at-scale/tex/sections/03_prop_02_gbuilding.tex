@@ -1,0 +1,126 @@
+\subsection{Provenance Graph Construction}
+\label{sec:prop:graph_building}
+
+As one can observe in Fig.~\ref{fig:solution}, the provenance graph construction task builds upon the image rank that is obtained by the provenance image filtering task, and ends up with the provenance graph.
+Therefore, at this point, we can assume that (in the best scenario) all images directly and transitively related to the query are available for constructing the provenance graph, as well as some \emph{distractors} (images that should not be present in the provenance graph, because they are not related to any of the images within it).
+
+The presence of distractors at this step is more of a matter of design.
+Taking into consideration that, in~\cite{bharati2017uphy}, experiments show distractors not impacting the provenance graph construction too much, and aiming to keep the provenance image filtering part as simple as possible, we give the subsequent dissimilarity matrix calculation task the duty of removing distractors. Therefore, the input is a set containing the $k$ top-retrieved images and the query, which are then used for building dissimilarity matrices.
+
+\vspace{0.2cm}
+\subsubsection{Calculation of Dissimilarity Matrices}
+\label{sec:prop_dismat}
+Similar to~\cite{Dias_2012}, given the set $I$ containing the $k$ top-retrieved images and the query, a dissimilarity matrix $D$ is a $(k+1)\times(k+1)$~matrix whose elements $d_{ij}$ describe the dissimilarity between images $I_i$ and $I_j$, respectively the $i$-th and $j$-th images of $I$.
+Depending on how the values $d_{ij}$ are calculated, $D$ can be either symmetric or asymmetric.
+
+In this work, following the solution proposed in~\cite{bharati2017uphy}, we neither make any strong assumptions with respect to the transformations that might have been used to generate the elements of $I$, nor impose limitations on the presence of near duplicates, semantically similar images, or multi-donor composites.
+Instead, we focus on analyzing the shared visual content between every pair of images $(I_i, I_j)$ through two ways of calculating $d_{ij}$.
+In the first one, we set $d_{ij}$ as the inverse of the number of geometrically-consistent interest-point matches (GCM) between images $I_i$ and $I_j$; in this particular case, the matrix $D$ is symmetric.
+In the second one, we set $d_{ij}$ as the \emph{mutual information} (MI) between a color transformation $T_j(I_i)$ of image $I_i$ towards image $I_j$; in this case, the matrix $D$ is asymmetric.
+Both methods are described below.
+
+\vspace{0.2cm}
+\subsubsection*{GCM-based dissimilarity}
+%As illustrated in Fig.~\ref{fig:solution},
+Provenance graph construction starts with the detection of interest points over each one of the $k+1$ images that belong to $I$.
+At this step, different interest point detectors can be applied, such as SURF~\cite{Bay:CVIU:2008} or Maximally Stable Extremal Regions (MSER)~\cite{Matas_2004}, with each one yielding a particular dissimilarity matrix. Once the interest points are available and properly described through feature vectors (\textit{e.g.}, SURF features~\cite{Bay:CVIU:2008}), we find correspondences among them for every pair of images $(I_i, I_j)$.
+Let $P_i$ be the set of feature vectors obtained from the interest points of image $I_i$, and $P_j$ be the set of features obtained from $I_j$.
+For each feature belonging to $P_i$, the two best matching features are found inside $P_j$ using Euclidean distance (the closer the features, the better the match).
+Inspired by Nearest-Neighbor-Distance-Ratio (NNDR) matching quality~\cite{lowe2004distinctive}, we ignore all the features whose ratio of the distances to the first and to the second best matching features is smaller than a threshold $t$, since they might present a poor distinctive quality.
+The remaining features are then kept and finally matched to their closest pair.
+
+Even with the use of NNDR, it is not uncommon to gather \emph{geometrically inconsistent matches}, \textit{i.e.}, contradictory interest-point matches that, if together, cannot represent plausible content transformations of image $I_i$ towards image $I_j$, and vice-versa. %, in terms of translation, rotation, and scaling.
+%For the sake of illustration, contradictory matches regard the ones that cross each other, as one might observe through the highlighted matches in Fig.~\ref{fig:solution}.
+To get rid of these matches, we adopt a solution that is able to build a geometrically-consistent model of expected interest-point positions from any pair of matches between images $I_i$ and $I_j$.
+For example, consider two arbitrary matches $m_1$ and $m_2$, which respectively connect points $p_1 \in I_i$ and $q_1 \in I_j$, and points $p_2 \in I_i$ and $q_2 \in I_j$.
+Based upon the positions, the distance $l_p$, and the angle $\alpha_p$ between points $p_1$ and $p_2$ (both from image $I_i$), as well as upon the positions, the distance $l_q$, and angle $\alpha_q$ between points $q_1$ and $q_2$ (both from image $I_j$), we estimate the scale, translation, and rotation matrices that make $p_1$ and $p_2$ respectively coincide with $q_1$ and $q_2$.
+With these matrices, we transform every matched interest point of $I_i$ onto the space of $I_j$.
+As one might expect, points that do not coincide with their respective peers after the transformations have their matches removed from the set of geometrically consistent matches.
+
+% Daniel: I removed the text below to give more space for a better explanation of mutual-information-based solutions.
+%Depending on the selected pair of matches for estimating the transformation model, though, different sets of consistent matches may be obtained.
+%In this case, one should take the model that returns the set of consistent matches with the largest cardinality (\textit{i.e.}, the maximal set of consistent matches).
+%In order to avoid performing an exhaustive search for such a set (by evaluating all the possible pairs of matches between images $I_i$ and $I_j$) we adopt a near-maximal approach, which evaluates only a subset of all the available matches.
+%Let $m$ be the total amount of matches established between images $I_i$ and $I_j$, after the application of NNDR.
+%After sorting the $m$ matches according to their distances, from the closest to the farthest, we build the mentioned subset with only the $n\leq m$ closest matches.
+%With this relaxation, we cannot guarantee that the obtained set of consistent matches is maximal, unless we adopt $n=m$.
+%However, there is a big chance of finding the maximal set, since it probably contains at least one of the $n$ best matches.
+
+\RED{Finally, we compute the dissimilarity matrix $D$  by setting every one of its $d_{ij}$ elements as the inverse of the number of found geometrically-consistent matches between images $I_i$ and $I_j$.
+In this case, the dissimilarity matrix is symmetric.} %, since $d_{ij}=d_{ji}$.
+
+\vspace{0.2cm}
+\subsubsection*{MI-based dissimilarity}
+\RED{The mutual-information (MI)-based dissimilarity matrix is  an extension of the GCM-based alternative (see Fig.~\ref{fig:solution}).}
+After finding the geometrically consistent interest-point matches for each pair of images $(I_i, I_j)$, the obtained interest points are used for estimating the homography $H_{ij}$ that guides the registration of image $I_i$ onto image $I_j$, as well as the homography $H_{ji}$ that analogously guides the registration of image $I_j$ onto image $I_i$.
+
+In the particular case of $H_{ij}$, for calculating $d_{ij}$, after obtaining the transformation $T_j(I_i)$ of image $I_i$ towards $I_j$, $T_j(I_i)$ and $I_j$ are properly registered, with $T_j(I_i)$ presenting the same size of $I_j$, and the matched interest points relying on the same position.
+We thus compute the bounding boxes that enclose all the matched interest points, within each image, obtaining two correspondent patches $R_1$, within $T_j(I_i)$, and $R_2$, within $I_j$.
+As in~\cite{bharati2017uphy}, the distribution of the pixel values of $R_1$ is matched to the distribution of $R_2$, prior to calculating the pixel-wise amount of residual between them with MI.
+
+From the point of view of information theory, MI is the amount of information that one random variable contains about another.
+From the point of view of probability theory, it measures the statistical dependence of two random variables.
+In practical terms, assuming each random variable as respectively the aligned and color-corrected patches $R_1$ and $R_2$, the value of MI is given by the entropy of discrete random variables:
+\vspace{-0.2cm}
+
+\begin{equation}
+\begin{aligned}
+& MI(R_1, R_2) = \\
+& \sum_{x \in R_1}^{ }{\sum_{y \in R_2}^{ }{p(x, y)}} \log \left ( \frac{p(x, y)}{\sum_{x}^{ } {p(x, y)} \sum_{y}^{ } {p(x, y)}} \right ),
+\end{aligned}
+\end{equation}
+
+\noindent where $x \in [0,..,255]$ refers to the pixel values of $R_1$, and $y \in [0,..,255]$ refers to the pixel values of $R_2$.
+The $p(x, y)$ value regards the joint probability distribution function of $R_1$ and $R_2$.
+As explained in~\cite{Costa_2017}, it can be approximated by:
+
+\begin{equation}
+p(x, y) = \frac{h(x, y)}{\sum_{x, y}^{ } {h(x, y)}},
+\end{equation}
+
+\noindent where $h(x, y)$ is the joint histogram that counts the number of occurrences for each possible value of the pair $(x, y)$, evaluated on the corresponding pixels for both patches $R_1$ and $R_2$.
+As a consequence, MI is directly proportional to the similarity of the two patches.
+
+Back to $H_{ji}$, it is calculated in an analogous way of $H_{ij}$.
+However, instead of $T_j(I_i)$, $T_i(I_j)$ is manipulated for transforming $I_j$ towards $I_i$. Further, the size of the registered images, the format of the matched patches, and the matched color distributions are different, leading to a different value of MI for setting $d_{ji}$.
+As a consequence, the resulting dissimilarity matrix $D$ is asymmetric, since $d_{ji}\ne d_{ji}$.
+
+\vspace{0.2cm}
+\subsubsection*{Avoiding distractors}
+As we have mentioned before, the image rank given to the provenance graph construction step may contain distractors, which need to be removed during the dissimilarity matrix calculation step.
+When computing the dissimilarity matrix $D$, the solution proposed by Bharati et al.~\cite{bharati2017uphy} establishes matches between every pair of available images, including distractors.
+By interpreting $D$ as the adjacency matrix of a multi-graph whose nodes are the images, they identify distractors as the nodes weakly connected (\textit{i.e.,} that present a small number of matches, down to none) to the minimum spanning tree that contains the query.
+Assuming $(k + 1)$ as the number of image nodes, they perform $(k^2 + k) / 2$ operations to populate $D$.
+
+In this work, we improve that process by the means of an iterative approach, which starts from the node of the query and then computes the geometrically consistent matches with the remaining $k$ images.
+A set with only the strongly connected nodes is thus saved for the next iteration.
+In the following iterations, the algorithm keeps trying to establish matches starting from the last set of strongly matched images, up to the point where no more strong matches are found.
+
+Although simple, this solution may provide a significant improvement in the runtime of the dimissimilarity matrix calculation.
+Let $d\leq k$ be the amount of distractors inside the image rank.
+We avoid $(d^2 - d) / 2$ operations by applying the iterative solution.
+In the case of a rank with 50 images ($k=50$), for instance, and 40 distractors ($d=40$) (indicating that the provenance graph contains only ten images), the number of operations is reduced from $1,275$ to $795$, significantly speeding up the runtime in case of small graphs.
+
+\vspace{0.2cm}
+\subsubsection{Clustered Provenance Graph Construction}
+\label{sec:prop_cluster}
+\RED{Once the GCM- and MI-based dissimilarity matrices are available, we rely on both for constructing the final provenance graph, by the means of a novel algorithm, named \emph{clustered provenance graph expansion}. This algorithm, differently from Kruskal's algorithm, delivers directed provenance graphs rather than undirected minimum spanning trees.}
+
+The main idea behind such solution is to group the available images in a way that only near duplicates of a common image are added to the same cluster.
+Starting from the image query $I_q$, the remaining images are sorted according to the number of geometrically consistent matches shared with $I_q$, from the largest to the smallest.
+The solution then clusters probable near duplicates around $I_q$, as long as they share \emph{enough content}, which is decided based upon the number of matches.
+After automatically adding the first image of the sorted set to the cluster of $I_q$, the solution iteratively analyzes the remaining available images.
+For deciding if the $i$-th candidate image $I_i$ (where $i>1$) is a near duplicate, the algorithm keeps track of the number of matches $m_i$ between $I_i$ and the last image $I_{i-1}$ added to the cluster.
+Let $\mu_{i-1}$ be the average number of matches of the cluster, and $\sigma_{i-1}$ be the standard deviation.
+$I_i$ is connected to $I_{i-1}$ in the final provenance graph, if $m_1 \in [\mu_{i-1} \text{ - } \sigma_{i-1}; \mu_{i-1} \text{ + } \sigma_{i-1}]$; in such a case, $I_i$ is added to the cluster by affinity, and novel values of $\mu_i$ and $\sigma_i$ are calculated, for evaluating the next candidate $I_{i+1}$.
+Otherwise, the current cluster is considered finished up to $I_{i-1}$.
+
+As a consequence, the obtained clusters have their images sequentially connected into a single path, without branches.
+That makes sense in scenarios involving sequential image edits where one near duplicate is obtained on top of the other, as in~\cite{nist2017dataset}.
+To determine the direction of a single edge, we rely on the mutual information.
+Let $D$ be the MI-based dissimilarity matrix, and consider two images $I_i$ and $I_j$, whose respective $D$ elements are $d_{ij}$ and $d_{ji}$.
+As explained in~\cite{Oliveira_2016}, an observation of $d_{ij} > d_{ji}$ means that $I_i$ probably generated $I_j$.
+
+Finally, whenever a cluster is finished and there are still disconnected available images, we find the image already added to the provenance graph whose number of matches with the remaining ones is largest.
+This image is then assumed as the new query $I_q'$, over which the aforementioned clustering algorithm is executed, considering only the yet disconnected images.
+As a result, the final provenance graph sees a branch rising from $I_q'$ as an orthogonal path containing new images.

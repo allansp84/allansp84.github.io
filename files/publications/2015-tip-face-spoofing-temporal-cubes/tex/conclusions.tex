@@ -1,0 +1,42 @@
+\section{Conclusions and Future Work}\label{sec:conclusions}
+In this paper, we proposed an algorithm for detecting spoofing attacks that takes advantage of noise and artifacts added to the synthetic biometric samples during their manufacture and recapture. We showed that the analysis of the behavior of the noise signature, in the frequency domain, is proper to reveal spoofing attacks. For this, we proposed the use of time-spectral features as low-level descriptors, which gather temporal and spectral information in a single feature descriptor. To handle several types of attacks and to obtain a feature descriptor with a suitable generalization, we also proposed the use of the visual codebook concept to find a mid-level representation from time-spectral descriptors. 
+
+The experimental results showed \redmark{that the magnitude is an important characteristic} from a signal, in frequency domain, for spoofing attack detection. We also showed how to use the visual codebook concept effectively in order to find a more robust space representation to the different kinds of attacks and with a good generalization. The obtained results \minor{demonstrated} the effectiveness of the proposed method in detecting different types of attacks (photo-, video-, and 3D-mask-based ones).
+
+\minor{We believe that the frequency-based approach used is effective because we have a decrease in low frequency components due to information loss caused during manufacture of the fake samples (e.g., information loss during printing) and recapture (e.g., blurring effect) and an increase in some high frequency components in the fake samples during recapture due to some artifacts added to the fake samples (e.g., printing artifacts, banding effect, noise added by the imaging sensor). Moreover, these disturbances in the composition of the components of frequencies are best characterized as we analyze the biometric sample in the frequency domain rather than spatial domain and along time instead of on isolated frames or still images.}
+
+% This table comes here because it was showing before another one in the results section
+\begin{table}[!ht]
+	\centering
+	\caption{Comparison among different anti-spoofing methods considering cross-dataset protocol.}
+	\label{tab:cross_comparison}
+	\begin{tabular}{m{0.11\textwidth}m{0.1\textwidth}m{0.1\textwidth}m{0.08\textwidth}}
+		\topline
+		\headcol \textbf{Methods} & \textbf{Train} & \textbf{Test} & \textbf{HTER (\%)} \\ 
+		\midline
+		\multirow{2}{*}{Proposed Method}
+		& Replay-Attack & CASIA & 50.00 \\
+		& CASIA & Replay-Attack & 34.38 \\
+		\hline
+		\rowcol													& Replay-Attack & CASIA & 48.28 \\
+		\rowcol \multirow{-2}{*}{Correlation} & CASIA & Replay-Attack & 50.25 \\
+		\hline
+		\multirow{2}{*}{LBP-TOP$_{8,8,8,1,1,1}^{u2}$} & Replay-Attack & CASIA & 61.33 \\
+		& CASIA & Replay-Attack & 50.64 \\		
+		\hline 
+		\rowcol & Replay-Attack & CASIA & 57.90 \\
+		\rowcol \multirow{-2}{*}{LBP$_{8,1}^{u2}$} & CASIA & Replay-Attack & 47.05 \\		
+		\bottomlinec
+	\end{tabular}
+\end{table}
+
+
+\minor{Regarding the important cross-dataset validation, the performed experiments demonstrated that the proposed method and other approaches available in the literature still have modest generalizations. This is of particular importance for the research community as it shows that the problem is still far from solved and cross-dataset validation must be considered from now on when designing and deploying spoofing detection techniques.}
+
+
+
+{As discussed earlier, we observed that different biometric sensors present different properties. Therefore, it is important to train a classifier considering this variability. UVAD dataset comes in hand for this purpose and will surely serve the community in this regard with more than 15k samples of hundreds of clients and diverse sensors.}
+
+\minor{Finally, it is worth mentioning that we do not claim to introduce the best method out there for spoofing detection. On the contrary, our very objective in this paper was to show that capturing spatio, spectral and temporal features from biometric samples can be successfully considered in the spoofing detection scenario. That being said, it is likely that the proposed approach, when combined with existing ones in the literature, may as well boost the performance since they will likely rely on complementary features for solving the problem.} 
+
+Directions for future research include the investigation of new approaches to transforming low-level descriptors into mid-level descriptors as Fisher vectors~\cite{Perronnin:ECCV:2010} and Bossa Nova~\cite{Avila:ICIP:2011}. These strategies for finding mid-level representations could also be exploited by methods that use texture-based descriptors. In such cases, the goal would be to investigate whether the representation space found by the texture descriptors used in the literature for detecting face spoofing attacks (e.g., LBP, LBP-TOP, and their variants) could be transformed in a new representation space better adapted to the face spoofing problem in a scenario with different types of attacks.

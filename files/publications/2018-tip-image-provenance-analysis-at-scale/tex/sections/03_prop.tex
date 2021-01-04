@@ -1,0 +1,42 @@
+\section{Provenance Analysis Methodology}
+\label{sec:prop}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=18.4cm]{figures/pipeline2.pdf}
+\caption{Proposed pipeline for end-to-end provenance analysis.
+The sequence of activities is divided into two parts, which address the tasks of \emph{image filtering} (left panel) and of \emph{graph construction} (right panel).
+IVFADC stands for \emph{Inverted File System with Asymmetric Distance Computation}.
+RCMM stands for \emph{Reciprocal Condition Matching Measure}.
+The value of $n$, within IVFADC, is the number of images in the database.
+The value of $k$ is a parameter of the solution and is related to the size of the RCMM rank used for building the provenance graph.
+$^\ast$Reported values are merely illustrative.
+}
+\label{fig:solution}
+\end{figure*}
+
+% Preamble
+As described in Sec.~\ref{sec:intro}, the task of image provenance analysis is divided into two major steps, namely \emph{Provenance Image Filtering} and \emph{Provenance Graph Construction}.
+Fig.~\ref{fig:solution} depicts an overview of the proposed solution in this context.
+
+% This material was already explained above. Cutting for %space. WJS
+% Definition of provenance image filtering
+%Roughly speaking, provenance image filtering aims at %efficiently and effectively gathering the images that are %related to a target image of interest %(\textit{a.k.a.}~query), from a large image corpus %(\textit{a.k.a.}~gallery, for instance, all the %1.5~million images uploaded to Imgur in the last %day~\cite{imguruploadnumbers}).
+%The inherent idea is to retrieve all the gallery images %whose content can be traced back and forward within the %composition history (\textit{a.k.a.}~provenance) of the %query (please refer to Panel~A in Fig.~\ref{fig:teaser} %for a real case example).
+%For that, we detail in Sec.~\ref{sec:prop:filtering} the %adopted approach for image filtering, which is %custom-tailored for the provenance task: it extends upon %state-of-the-art efficient image indexing and search %techniques (such as the solution of Johnson et %al.~\cite{johnson2017billion}), by adding novelties such %as \emph{distributed interest point selection} and %\emph{iterative filtering}.
+%Such novelties indeed lead to improvements in the final %system retrieval effectiveness, as we further show in %Sec.~\ref{sec:results}.
+
+% Definition of provenance graph construction
+%Provenance graph construction, in turn, aims at building %the simple %(in opposition to \emph{multigraph})
+%directed acyclic graph whose nodes individually represent %each previously retrieved image or the query itself, and %the edges express the direct content provenance from one %image to the other (please refer to Panel~B in %Fig.~\ref{fig:teaser} for an example).
+%For that, in Sec.~\ref{sec:prop:graph_building}, we follow %the literature and first explain how to compute the %dissimilarity matrices, data structures that store the %dissimilarities between every pair of retrieved images.
+%In the sequence, we introduce a novel solution for %obtaining the provenance graph from the dissimilarity %matrices, namely \emph{clustered provenance graph %construction}.
+%We conclude the issue of Provenance Graph Construction by %introducing graph conciliation techniques that lately %combine different and divergent provenance graphs into a %single and better one.
+
+% Subsections
+%\input{./backup/03_prop_01_filtering_joel.tex} (Original)
+\input{./sections/03_prop_01_filtering.tex}
+\input{./sections/03_prop_02_gbuilding.tex}
+
+% Conclusion of section
+%In the following sections, we evaluate the proposed %provenance analysis pipeline, by detailing the %experimental setup (in Sec.~\ref{sec:expsetup}) and %reporting the experimental results over three interesting %datasets (in Sec.~\ref{sec:results}).

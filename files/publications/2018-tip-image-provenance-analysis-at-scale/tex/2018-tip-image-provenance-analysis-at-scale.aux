@@ -1,0 +1,225 @@
+\relax 
+\citation{farid2009image,Rocha:CSUR:2011,farid2017detect}
+\citation{Dias_2012,Dias_2013}
+\citation{reddit2017photoshopbattles}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
+\newlabel{sec:intro}{{I}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Image Provenance Analysis}}{1}}
+\newlabel{fig:teaser}{{1}{1}}
+\citation{cdc}
+\citation{NYT1}
+\citation{PP1}
+\citation{manovich2009cultural,yamaoka2011cultural}
+\citation{johnson2017billion}
+\citation{ge2013optimized}
+\citation{Zisserman_2003}
+\citation{pinto2017filtering}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}}
+\newlabel{sec:rw}{{II}{2}}
+\citation{russakovsky_2015}
+\citation{zhou_2017}
+\citation{lowry2016visual}
+\citation{cehovin_2016}
+\citation{winkler_2013}
+\citation{Dias_2012}
+\citation{Deselaers_2009}
+\citation{Deselaers_2010,oliva_2006}
+\citation{avila_2013,nanni2013heterogeneous}
+\citation{szegedy_2015,krizhevsky_2017,zhou2014learning,wang2017knowledge}
+\citation{maresca_2013,yang2015ransac,joly_2007,huang_2008,silva_2015}
+\citation{milford2014condition}
+\citation{Costa_2017,bharati2017uphy}
+\citation{zagoruyko_2015,simoserra_2015}
+\citation{chollet_2017}
+\citation{zagoruyko_2015}
+\citation{lowe2004distinctive}
+\citation{Kennedy_2008}
+\citation{Dias_2011}
+\citation{Dias_2012}
+\citation{Dias_2013_large}
+\citation{Dias_2013}
+\citation{edmonds_1967}
+\citation{Dias_2013_fsi}
+\citation{Costa_2014}
+\citation{oikawa_2016}
+\citation{Costa_2017}
+\citation{Oliveira_2016}
+\citation{nist2017plan}
+\citation{bharati2017uphy}
+\citation{nist2017dataset}
+\citation{reddit2017photoshopbattles}
+\citation{pinto2017filtering,nist2017plan}
+\citation{barroso2003web}
+\citation{jacquicheng}
+\citation{Bay:CVIU:2008}
+\citation{pinto2017filtering}
+\citation{Bay:CVIU:2008}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Provenance Analysis Methodology}{4}}
+\newlabel{sec:prop}{{III}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Provenance Image Filtering}{4}}
+\newlabel{sec:prop:filtering}{{\unhbox \voidb@x \hbox {III-A}}{4}}
+\newlabel{sec:prop_spread_kp}{{\unhbox \voidb@x \hbox {III-A}1}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}Distributed Interest Point Selection}{4}}
+\citation{ge2013optimized}
+\citation{Jegou:TPAMI:2011}
+\citation{Jegou:TPAMI:2011}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Proposed pipeline for end-to-end provenance analysis. The sequence of activities is divided into two parts, which address the tasks of \emph  {image filtering} (left panel) and of \emph  {graph construction} (right panel). IVFADC stands for \emph  {Inverted File System with Asymmetric Distance Computation}. RCMM stands for \emph  {Reciprocal Condition Matching Measure}. The value of $n$, within IVFADC, is the number of images in the database. The value of $k$ is a parameter of the solution and is related to the size of the RCMM rank used for building the provenance graph. $^\ast $Reported values are merely illustrative. }}{5}}
+\newlabel{fig:solution}{{2}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Effects of using the approach of distributed interest point selection. In (a), the result of a regular SURF interest point detection. In (b), the result of the distributed approach over the same image, with many more points over homogeneous regions, such as the skin of the wrist.}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{5}}
+\newlabel{fig:disitributed_kp}{{3}{5}}
+\newlabel{sec:prop_indxing}{{\unhbox \voidb@x \hbox {III-A}2}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}\leavevmode {\color  {black}Database Indexing}}{5}}
+\newlabel{sec:prop_search}{{\unhbox \voidb@x \hbox {III-A}3}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}\leavevmode {\color  {black}Image Search}}{5}}
+\citation{pinto2017filtering}
+\citation{brogan2017spotting}
+\citation{bharati2017uphy}
+\citation{Dias_2012}
+\citation{bharati2017uphy}
+\citation{Bay:CVIU:2008}
+\citation{Matas_2004}
+\citation{Bay:CVIU:2008}
+\citation{lowe2004distinctive}
+\newlabel{sec:prop_iterative_filtering}{{\unhbox \voidb@x \hbox {III-A}4}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}4}Iterative Filtering}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Provenance Graph Construction}{6}}
+\newlabel{sec:prop:graph_building}{{\unhbox \voidb@x \hbox {III-B}}{6}}
+\newlabel{sec:prop_dismat}{{\unhbox \voidb@x \hbox {III-B}1}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}1}Calculation of Dissimilarity Matrices}{6}}
+\citation{bharati2017uphy}
+\citation{Costa_2017}
+\citation{bharati2017uphy}
+\citation{nist2017dataset}
+\citation{Oliveira_2016}
+\newlabel{sec:prop_cluster}{{\unhbox \voidb@x \hbox {III-B}2}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}2}Clustered Provenance Graph Construction}{7}}
+\citation{nist2017dataset}
+\citation{nist2017presentation}
+\citation{nist2017dataset}
+\citation{nist2017dataset}
+\citation{Oliveira_2016}
+\citation{Oliveira_2016}
+\citation{reddit2017photoshopbattles}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{8}}
+\newlabel{sec:expsetup}{{IV}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Datasets}{8}}
+\newlabel{sec:exp_datasets}{{\unhbox \voidb@x \hbox {IV-A}}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}1}NIST Dataset}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}2}Professional Dataset}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}3}Reddit Dataset}{8}}
+\citation{nist2017dataset}
+\citation{Papadimitriou_2010}
+\citation{nist2017plan}
+\citation{flann_pami_2014,Attach:binary_matching_crv2012}
+\citation{Bay:CVIU:2008}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces }}{9}}
+\newlabel{fig:redditViz}{{4}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Evaluation Metrics}{9}}
+\newlabel{sec:exp_metrics}{{\unhbox \voidb@x \hbox {IV-B}}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Large-Scale Infrastructure}{9}}
+\newlabel{sec:exp_lsi}{{\unhbox \voidb@x \hbox {IV-C}}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Filtering pipeline infrastructure. The orange area (left) shows computations that are performed on a CPU. The purple area (right) shows the index ingestion steps that are performed on a GPU.}}{9}}
+\newlabel{fig:filterPipeline}{{5}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Producer-consumer index ingestion. Each file contains features for an image. These file locations are pre-loaded into cache via a rate-limited ``touch" thread, and are read on a producer-consumer multi-threaded basis.}}{9}}
+\newlabel{fig:touchPipeline}{{6}{9}}
+\citation{pinto2017filtering}
+\citation{pinto2017filtering}
+\citation{Bay:CVIU:2008}
+\citation{Matas_2004}
+\citation{Bay:CVIU:2008}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Filtering Setup}{10}}
+\newlabel{sec:exp_p1}{{\unhbox \voidb@x \hbox {IV-D}}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-E}}Graph Construction Setup}{10}}
+\newlabel{sec:exp_p2}{{\unhbox \voidb@x \hbox {IV-E}}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results}{10}}
+\newlabel{sec:results}{{V}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Image Filtering}{10}}
+\newlabel{sec:res_1}{{\unhbox \voidb@x \hbox {V-A}}{10}}
+\citation{pinto2017filtering}
+\citation{bharati2017uphy}
+\citation{bharati2017uphy}
+\citation{bharati2017uphy}
+\citation{bharati2017uphy}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Results of provenance image filtering over the NIST dataset. We report the average values on the provided 65 queries.}}{11}}
+\newlabel{tab:filtering}{{I}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Graph Construction}{11}}
+\newlabel{sec:res_2}{{\unhbox \voidb@x \hbox {V-B}}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Results of provenance graph construction over the NIST dataset. We report the average values on the provided 65 queries.}}{11}}
+\newlabel{tab:nist}{{II}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Results of provenance graph construction over the Professional dataset. We report the average values on the 80 queries belonging to the test set.}}{11}}
+\newlabel{tab:prof}{{III}{11}}
+\citation{pinto2017filtering}
+\citation{Nimble_2017}
+\citation{Oliveira_2016}
+\citation{reddit2017photoshopbattles}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Results of provenance graph construction over the Reddit dataset. We report the average values on the provided 184 queries.}}{12}}
+\newlabel{tab:reddit}{{IV}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusions}{12}}
+\newlabel{sec:conc}{{VI}{12}}
+\bibstyle{IEEEtran}
+\bibdata{bibliography}
+\bibcite{farid2009image}{1}
+\bibcite{Rocha:CSUR:2011}{2}
+\bibcite{farid2017detect}{3}
+\bibcite{Dias_2012}{4}
+\bibcite{Dias_2013}{5}
+\bibcite{reddit2017photoshopbattles}{6}
+\bibcite{cdc}{7}
+\bibcite{NYT1}{8}
+\bibcite{PP1}{9}
+\bibcite{manovich2009cultural}{10}
+\bibcite{yamaoka2011cultural}{11}
+\bibcite{johnson2017billion}{12}
+\bibcite{ge2013optimized}{13}
+\bibcite{Zisserman_2003}{14}
+\bibcite{pinto2017filtering}{15}
+\bibcite{russakovsky_2015}{16}
+\bibcite{zhou_2017}{17}
+\bibcite{lowry2016visual}{18}
+\bibcite{cehovin_2016}{19}
+\bibcite{winkler_2013}{20}
+\bibcite{Deselaers_2009}{21}
+\bibcite{Deselaers_2010}{22}
+\bibcite{oliva_2006}{23}
+\bibcite{avila_2013}{24}
+\bibcite{nanni2013heterogeneous}{25}
+\bibcite{szegedy_2015}{26}
+\bibcite{krizhevsky_2017}{27}
+\bibcite{zhou2014learning}{28}
+\bibcite{wang2017knowledge}{29}
+\bibcite{maresca_2013}{30}
+\bibcite{yang2015ransac}{31}
+\bibcite{joly_2007}{32}
+\bibcite{huang_2008}{33}
+\bibcite{silva_2015}{34}
+\bibcite{milford2014condition}{35}
+\bibcite{Costa_2017}{36}
+\bibcite{bharati2017uphy}{37}
+\bibcite{zagoruyko_2015}{38}
+\bibcite{simoserra_2015}{39}
+\bibcite{chollet_2017}{40}
+\bibcite{lowe2004distinctive}{41}
+\bibcite{Kennedy_2008}{42}
+\bibcite{Dias_2011}{43}
+\@writefile{toc}{\contentsline {section}{References}{13}}
+\bibcite{Dias_2013_large}{44}
+\bibcite{edmonds_1967}{45}
+\bibcite{Dias_2013_fsi}{46}
+\bibcite{Costa_2014}{47}
+\bibcite{oikawa_2016}{48}
+\bibcite{Oliveira_2016}{49}
+\bibcite{nist2017plan}{50}
+\bibcite{nist2017dataset}{51}
+\bibcite{barroso2003web}{52}
+\bibcite{jacquicheng}{53}
+\bibcite{Bay:CVIU:2008}{54}
+\bibcite{Jegou:TPAMI:2011}{55}
+\bibcite{brogan2017spotting}{56}
+\bibcite{Matas_2004}{57}
+\bibcite{nist2017presentation}{58}
+\bibcite{Papadimitriou_2010}{59}
+\bibcite{flann_pami_2014}{60}
+\bibcite{Attach:binary_matching_crv2012}{61}
+\bibcite{Nimble_2017}{62}

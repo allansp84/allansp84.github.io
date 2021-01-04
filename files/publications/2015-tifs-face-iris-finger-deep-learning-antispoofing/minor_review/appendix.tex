@@ -1,0 +1,48 @@
+\appendices
+
+\section{Convolutional Network Operations}
+\label{sec:convnet_ops}
+
+Our networks use classic convolutional operations that can be viewed as linear and non-linear image processing operations. When stacked, these operations essentially extract higher level representations, named \emph{multiband images}, whose pixel attributes are concatenated into high-dimensional feature vectors for later pattern recognition.\footnote{This appendix describes convolutional networks from an image processing perspective, therefore the use of terms like image \emph{domain}, image \emph{band}, \emph{etc.}}
+
+Assuming $\hat{I}=(D_I,\vec{I})$ as a multiband image, where $D_I \subset Z^2$ is the image domain and $\vec{I}(p)=\{I_1(p),I_2(p),\ldots, I_m(p)\}$ is the attribute vector of a $m$-band pixel $p=(x_p,y_p)\in D_I$, the aforementioned operations can be described as follows.
+
+\subsubsection{Filter Bank Convolution}
+
+Let ${\cal A}(p)$ be a squared region centered at $p$ of size $L_{\cal A} \times L_{\cal A}$, such that ${\cal A} \subset D_I$ and $q\in {\cal A}(p)$ iff $\max(|x_q-x_p|,|y_q-y_p|)\leq (L_{\cal A}-1)/2$.
+Additionally, let $\Phi=({\cal A},W)$ be a filter with weights $W(q)$ associated with pixels $q\in {\cal A}(p)$.
+In the case of multiband filters, filter weights can be represented as vectors $\vec{W}_i(q)=\{w_{i,1}(q),w_{i,2}(q),\ldots,w_{i,m}(q)\}$ for each filter $i$ of the bank, and a multiband filter bank $\Phi = \{\Phi_1, \Phi_2, \ldots, \Phi_n\}$ is a set of filters $\Phi_i=({\cal A},\vec{W}_i)$, $i=\{1,2,\ldots,n\}$.
+
+The convolution between an input image $\hat{I}$ and a filter $\Phi_i$ produces a band $i$ of the filtered image $\hat{J}=(D_J,\vec{J})$, where $D_J \subset D_I$ and $\vec{J}=(J_1,J_2,\ldots,J_n)$, such that for each $p\in D_J$,
+\begin{equation}
+J_i(p) = \sum_{\forall q\in {\cal A}(p)} \vec{I}(q)\cdot \vec{W}_i(q).
+\end{equation}
+
+\subsubsection{Rectified Linear Activation}
+
+Filter activation in this work is performed by rectified linear units (RELUs) of the type present in many state-of-the-art convolutional architectures~\cite{Krizhevsky:2012,Pinto:2011b} and is defined as
+\begin{equation}
+J_i(p) = \max(J_i(p),0).
+\end{equation}
+
+\subsubsection{Spatial Pooling}
+
+Spatial pooling is an operation of paramount importance in the literature of convolutional networks~\cite{LeCun:1998} that aims at bringing translational invariance to the features by aggregating activations from the same filter in a given region. 
+
+Let ${\cal B}(p)$ be a pooling region of size $L_{\cal B} \times L_{\cal B}$ centered at pixel $p$ and $D_K = D_J/s$ be a regular subsampling of every $s$ pixels $p \in D_J$. We call $s$ the \emph{stride} of the pooling operation. Given that $D_J \subset Z^2$, if $s=2$, $|D_K| = |D_J|/4$, for example.
+The pooling operation resulting in the image $\hat{K}=(D_K,\vec{K})$  is defined as 
+\begin{equation}
+K_i(p) = \sqrt[\alpha]{\sum_{\forall q\in {\cal B}(p)} J_i(q)^{\alpha}}, 
+\end{equation}
+where $p\in D_K$ are pixels in the new image, $i=\{1,2,\ldots,n\}$ are the image bands, and $\alpha$ is a hyperparameter that controls the sensitivity of the operation. In other words, our pooling operation is the $L_{\alpha}$-norm of values in ${\cal B}(p)$. 
+The stride $s$ and the size of the pooling neighborhood defined by $L_{\cal B}$ are other hyperparameters of the operation.
+
+\subsubsection{Divisive Normalization}
+
+The last operation considered in this work is divisive normalization, a mechanism widely used in top-performing convolutional networks~\cite{Krizhevsky:2012,Pinto:2011b} that is based on gain control mechanisms found in cortical neurons~\cite{Geisler:1992}.
+
+This operation is also defined within a squared region ${\cal C}(p)$ of size $L_{\cal C} \times L_{\cal C}$ centered at pixel $p$ such that 
+\begin{equation}
+O_i(p) = \frac{K_i(p)}{\sqrt{\sum_{j=1}^{n}\sum_{\forall q\in {\cal C}(p)} K_j(q)^2}}
+\end{equation}
+for each pixel $p\in D_O \subset D_K$ of the resulting image $\hat{O}=(D_O,\vec{O})$. Divisive normalization promotes competition among pooled filter bands such that high responses will prevail even more over low ones, further strengthening the robustness of the output representation $\vec{O}$.

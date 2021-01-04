@@ -1,0 +1,35 @@
+\definecolor{darkgreen}{rgb}{0.7176, 0.7843, 0.7176}
+\definecolor{lightgreen}{rgb}{0.9529, 0.9569, 0.9529}
+
+\colorlet{tableheadcolor}{darkgreen} 
+\newcommand{\headcol}{\rowcolor{tableheadcolor}} %
+\colorlet{tablerowcolor}{lightgreen} 
+\newcommand{\rowcol}{\rowcolor{tablerowcolor}} 
+\newcommand{\topline}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+\newcommand{\midline}{\arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\hline}
+% -- command \rowmidlinecw consists of 3 rules (top colour tablerowcolor, middle colour black, bottom colour white)
+\newcommand{\rowmidlinecw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+% -- command \rowmidlinewc consists of 3 rules (top colour white, middle colour black, bottom colour tablerowcolor)
+\newcommand{\rowmidlinewc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+% -- command \rowmidlinew consists of 1 white rule
+\newcommand{\rowmidlinew}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+% -- command \rowmidlinec consists of 1 tablerowcolor rule
+\newcommand{\rowmidlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+% -- command \bottomline consists of 2 rules (top colour
+\newcommand{\bottomline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+\newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%

@@ -1,0 +1,175 @@
+\begin{thebibliography}{10}
+
+\bibitem{Dias_2013}
+Zanoni Dias, Siome Goldenstein, and Anderson Rocha,
+\newblock ``Toward image phylogeny forests: Automatically recovering
+  semantically similar image relationships,''
+\newblock {\em Forensic science international}, vol. 231, no. 1, pp. 178--189,
+  2013.
+
+\bibitem{Nimble_2016}
+National~Institute of~Standards and Technology (NIST),
+\newblock ``The 2016 nimble challenge evaluation dataset,''
+  https://www.nist.gov/itl/iad/mig/nimble-challenge-2017-evaluation, Jan. 2016.
+
+\bibitem{Dias_2012}
+Z.~Dias, A.~Rocha, and S.~Goldenstein,
+\newblock ``Image phylogeny by minimal spanning trees,''
+\newblock {\em {IEEE} Transactions on Information Forensics and Security
+  (TIFS)}, vol. 7, no. 2, pp. 774--788, April 2012.
+
+\bibitem{Keyes_2004}
+Ralph Keyes,
+\newblock {\em The post-truth era: Dishonesty and deception in contemporary
+  life},
+\newblock Macmillan, 2004.
+
+\bibitem{Mahler_2016}
+Jonathan Mahler,
+\newblock ``The problem with �self-investigation� in a post-truth era,''
+\newblock {\em The New York Times Magazine}, January 1st, 2017,
+\newblock Available online at \url{http://tinyurl.com/juufufc}.
+
+\bibitem{Schulten_2017}
+Katherine Schulten and Amanda~Christy Brown,
+\newblock ``Evaluating sources in a `post-truth' world: Ideas for teaching and
+  learning about fake news,''
+\newblock {\em The New York Times}, January 19th, 2017,
+\newblock Available online at \url{http://tinyurl.com/h3w7rp8}.
+
+\bibitem{Rocha:CSUR:2011}
+A.~Rocha, W.~Scheirer, T.~E. Boult, and S.~Goldenstein,
+\newblock ``{Vision of the Unseen: Current Trends and Challenges in Digital
+  Image and Video Forensics},''
+\newblock {\em ACM Computing Surveys (CSUR)}, vol. 43, pp. 1--42, 2011.
+
+\bibitem{Oliveira_2016}
+Alberto~A de~Oliveira, Pasquale Ferrara, Alessia De~Rosa, Alessandro Piva,
+  Mauro Barni, Siome Goldenstein, Zanoni Dias, and Anderson Rocha,
+\newblock ``Multiple parenting phylogeny relationships in digital images,''
+\newblock {\em IEEE Transactions on Information Forensics and Security}, vol.
+  11, no. 2, pp. 328--343, 2016.
+
+\bibitem{Ke_2004}
+Yan Ke, Rahul Sukthankar, and Larry Huston,
+\newblock ``Efficient near-duplicate detection and sub-image retrieval,''
+\newblock in {\em ACM Intl. Conference on Multimedia}, 2004, pp. 869--876.
+
+\bibitem{Zhou:MM:2010}
+Wengang Zhou, Yijuan Lu, Houqiang Li, Yibing Song, and Qi~Tian,
+\newblock ``Spatial coding for large scale partial-duplicate web image
+  search,''
+\newblock in {\em {ACM} Int. Conference on Multimedia}, New York, NY, USA,
+  2010, MM '10, pp. 511--520, ACM.
+
+\bibitem{Tang:ICIP:2015}
+S.~Tang, H.~Chen, K.~Lv, and Y.~D. Zhang,
+\newblock ``Large visual words for large scale image classification,''
+\newblock in {\em {IEEE} Int. Conference on Image Processing (ICIP)}, Sept
+  2015, pp. 1170--1174.
+
+\bibitem{Yuan:ICIP:2015}
+J.~Yuan and X.~Liu,
+\newblock ``Product tree quantization for approximate nearest neighbor
+  search,''
+\newblock in {\em {IEEE} Int. Conference on Image Processing (ICIP)}, Sept
+  2015, pp. 2035--2039.
+
+\bibitem{Zeng:ICIP:2016}
+K.~H. Zeng, Y.~C. Lin, A.~Farhadi, and M.~Sun,
+\newblock ``Semantic highlight retrieval,''
+\newblock in {\em {IEEE} Int. Conference on Image Processing (ICIP)}, Sept
+  2016, pp. 3359--3363.
+
+\bibitem{Dong:ICMR:2012}
+Wei Dong, Zhe Wang, Moses Charikar, and Kai Li,
+\newblock ``High-confidence near-duplicate image detection,''
+\newblock in {\em {ACM} Int. Conference on Multimedia Retrieval}, New York, NY,
+  USA, 2012, pp. 1:1--1:8, ACM.
+
+\bibitem{Datta_2008}
+Ritendra Datta, Dhiraj Joshi, Jia Li, and James~Z Wang,
+\newblock ``Image retrieval: Ideas, influences, and trends of the new age,''
+\newblock {\em ACM Computing Surveys (CSUR)}, vol. 40, no. 2, pp. 5, 2008.
+
+\bibitem{Deselaers_2009}
+Thomas Deselaers, Tobias Gass, Philippe Dreuw, and Hermann Ney,
+\newblock ``Jointly optimising relevance and diversity in image retrieval,''
+\newblock in {\em {ACM} Int. Conference on Multimedia Retrieval}. ACM, 2009,
+  p.~39.
+
+\bibitem{Dias_2011}
+Zanoni Dias, Anderson Rocha, and Siome Goldenstein,
+\newblock ``Video phylogeny: Recovering near-duplicate video relationships,''
+\newblock in {\em {IEEE} Int. Workshop on Information Forensics and Security
+  (WIFS)}. IEEE, 2011, pp. 1--6.
+
+\bibitem{Lameri_2014}
+Silvia Lameri, Paolo Bestagini, Ambra Melloni, Simone Milani, Anderson Rocha,
+  Marco Tagliasacchi, and Stefano Tubaro,
+\newblock ``Who is my parent? reconstructing video sequences from partially
+  matching shots,''
+\newblock in {\em {IEEE} Int. Conference on Image Processing (ICIP)}. IEEE,
+  2014, pp. 5342--5346.
+
+\bibitem{Nucci_2013}
+Matteo Nucci, Marco Tagliasacchi, and Stefano Tubaro,
+\newblock ``A phylogenetic analysis of near-duplicate audio tracks,''
+\newblock in {\em {IEEE} Int. Workshop on Multimedia Signal Processing (MMSP)}.
+  IEEE, 2013, pp. 099--104.
+
+\bibitem{Andrews_2012}
+Nicholas Andrews, Jason Eisner, and Mark Dredze,
+\newblock ``Name phylogeny: A generative model of string variation,''
+\newblock in {\em Intl. Conference on Empirical Methods in Natural Language
+  Processing and Computational Natural Language Learning}. Association for
+  Computational Linguistics, 2012, pp. 344--355.
+
+\bibitem{Bay:CVIU:2008}
+Herbert Bay, Andreas Ess, Tinne Tuytelaars, and Luc Van~Gool,
+\newblock ``Speeded-up robust features (surf),''
+\newblock {\em Comput. Vis. Image Underst.}, vol. 110, no. 3, pp. 346--359,
+  June 2008.
+
+\bibitem{Lowe_1999}
+David~G Lowe,
+\newblock ``Object recognition from local scale-invariant features,''
+\newblock in {\em {IEEE} Int. Conference on Computer Vision and Pattern
+  Recognition (CVPR)}. Ieee, 1999, vol.~2, pp. 1150--1157.
+
+\bibitem{Zitova_2003}
+Barbara Zitova and Jan Flusser,
+\newblock ``Image registration methods: a survey,''
+\newblock {\em Image and vision computing}, vol. 21, no. 11, pp. 977--1000,
+  2003.
+
+\bibitem{Goodfellow_2016}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville,
+\newblock {\em Deep learning},
+\newblock MIT Press, 2016.
+
+\bibitem{Arya_1998}
+Sunil Arya, David~M. Mount, Nathan~S. Netanyahu, Ruth Silverman, and Angela~Y.
+  Wu,
+\newblock ``An optimal algorithm for approximate nearest neighbor searching
+  fixed dimensions,''
+\newblock {\em Journal of ACM}, vol. 45, no. 6, pp. 891--923, Nov. 1998.
+
+\bibitem{Bentley:COMMUN:1975}
+Jon~Louis Bentley,
+\newblock ``Multidimensional binary search trees used for associative
+  searching,''
+\newblock {\em Commun. ACM}, vol. 18, no. 9, pp. 509--517, Sept. 1975.
+
+\bibitem{Steinbach:KDD:2000}
+Michael Steinbach, George Karypis, and Vipin Kumar,
+\newblock ``A comparison of document clustering techniques,''
+\newblock in {\em In KDD Workshop on Text Mining}, 2000.
+
+\bibitem{Jegou:TPAMI:2011}
+H.~Jegou, M.~Douze, and C.~Schmid,
+\newblock ``Product quantization for nearest neighbor search,''
+\newblock {\em {IEEE} Transactions on Pattern Analysis and Machine Intelligence
+  (TPAMI)}, vol. 33, no. 1, pp. 117--128, Jan 2011.
+
+\end{thebibliography}

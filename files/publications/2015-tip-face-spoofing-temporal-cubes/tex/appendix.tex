@@ -1,0 +1,44 @@
+\appendix
+\section{ANOVA} 
+\label{sec:appendix:anova}
+
+Table~\ref{table:ANOVAT} shows the results of the analysis of variance considering all factors that can influence the value of the AUC for our method (See Table~\ref{table:DOE}). In variance analysis, the assessment of the evidence that the response variable is influenced by the factor {Tr} can be investigated by considering the hypothesis testing shown in Equation~\ref{eq:ht}. If the level means $\alpha_{k}$ of the factor {Tr} are all equal to $0$, then it can be shown that the expected value of the response variable does not depend on factor {Tr}. If at least one level mean of the factor {Tr} is nonzero, then the expected value of the response value of the response variable does depend upon the level of factor {Tr} employed~\cite{Hayter:CL:2012}.
+%\newtodo{Allan, use um outro fator, não A pois confunde com o apêndice A.}
+%\todo{A equação abaixo deveria ser alinhada à esquerda para $H_i$. Além disso, a hipótese alternativa é classicamente chamada de $H_1$ e não $H_A$. \textbf{Allan:} Feito. \textbf{William}: faltou mudar no texto para 1 e não A.}
+\begin{equation}
+\begin{aligned}
+	H_{0}: & \quad \alpha_{i} = 0 \qquad 1 \leq i \leq k \\
+	H_{1}: & \quad \text{some } \alpha_{i} \neq 0
+\end{aligned}
+\label{eq:ht}
+\end{equation}
+
+In the Table~\ref{table:ANOVAT}, the first column shows the factors under analysis and in the second column their respective degree of freedom, which is determined by the number of levels minus one. The ANOVA is based on a decomposition of the total sum of square (SST), into sums of squares for each factor (SSTr) and error sum of squares (SSE), third column of the table, and these measures are important because the plausibility of the null hypothesis that the ``factor level means are all equal'' depends upon the relative size of the sum of squares for treatments SSTr to the sum of squares for error SSE~\cite{Hayter:CL:2012}. With this, we calculate the mean of squares for factors (MSTr) and the mean square error (MSE), shown in the fourth column, by dividing the sum of squares of the each factor by their respective degree of freedom.
+
+Both MSTr and MSE play an important role to determine about the plausibility of the null hypothesis. Consider an hypothetical factor {Tr} with k levels ($1,2, \dots, \alpha_{k}$). If the factor level means $\alpha_{k}$ are all equal, then MSTr and MSE has a $\chi^{2}$ distribution, that is, MSTr $\sim \chi^{2}_{k-1}$ and MSE $\sim \chi^{2}_{n_{T}-k}$. As the F-statistic is calculated by dividing MSTr by MSE, then when the null hypothesis is true, the F-statistic has an F distribution, that is, $F=\frac{MSTr}{MSE} \sim \frac{\chi^{2}_{k-1}}{\chi^{2}_{n_{T}-k}} \sim F_{k-1,n_{T}-k}$.
+
+The plausibility of the null hypothesis is doubtful whenever the observed value of the F-statistic does not look like it is an observation from an $F_{k-1,n_{T}-k}$ distribution. 
+%\todo{Não entendi a próxima sentença. \textbf{Allan:} Explicação melhorada} 
+The $p$-value showed in the last column of the ANOVA table is a probability of obtain the test statistic ($F_{k-1,n_{T}-k}$) as or more extreme than those observed (F-statistic), assuming that $H_{0}$ is true~\cite{Bland:OG:2002}. Mathematically, $p$-value is calculated as $P(X \geq F)$, which the random variable $X$ has a $F_{k-1,n_{T}-k}$ distribution. A $p$-value smaller than a significance level $\alpha$, leading to rejection of the null hypothesis. Most researchers use a $95\%$ confidence level, that is, $\alpha=5\%$. Therefore, considering the $95\%$ confidence level, we can see that all factors influence significantly the AUC value.
+%
+\begin{table}[!htb]
+\centering
+%\linethickness{1.5mm}
+\caption{Analysis of variance for the development set of the Replay-Attack database. From left to right column, we have the parameter name, degree of freedom, sum of squares, mean of squares, F-statistic, and $p$-value. Considering a confidence level of $95\%$, the parameters with $p$-values smaller than $0.05$ are important (i.e., significant) to our method.}
+\label{table:ANOVAT}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Factor} & \textbf{Df} & \textbf{SS} & \textbf{MS} & \textbf{F-statistic} & \textbf{$\textit{p}$-value} \\
+\otoprule
+NTV           & 2 &   52601&   26300&  105.93& $<$ 2.2e-16\\
+LGF           & 1 &  309848&  309848& 1247.95& $<$ 2.2e-16\\
+M             & 3 &   59803&   19934&   80.29& $<$ 2.2e-16\\
+CS            & 1 &  160239&  160239&  645.38& $<$ 2.2e-16\\
+SDD           & 1 &  492765&  492765& 1984.68& $<$ 2.2e-16\\
+DS            & 6 &   36589&    6098&   24.56& $<$ 2.2e-16\\
+CP            & 2 &   85974&   42987&  173.14& $<$ 2.2e-16\\
+C             & 1 &   16374&   16374&   65.95&  5.08e-16\\
+Errors(Residuals)&12078& 2998787&     248 & & \\
+\bottomrule
+\end{tabular}
+\end{table}

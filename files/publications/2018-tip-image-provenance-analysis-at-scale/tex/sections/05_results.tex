@@ -1,0 +1,179 @@
+% Daniel's notes: this is a new version of the results section, which reduces the amount of reported results and moves experimental details to the previous experimental setup section.
+% Please refer to 05_results.tex for the original version.
+
+\section{Results}
+\label{sec:results}
+In this section, we report the experimental results concerning the tasks of provenance image filtering (in Sec.~\ref{sec:res_1}) and of provenance graph construction (in Sec.~\ref{sec:res_2}).
+
+\subsection{Image Filtering}
+\label{sec:res_1}
+Table~\ref{tab:filtering} contains the results of provenance image filtering over the 65 queries of the NIST dataset, following the setup detailed in Sec.~\ref{sec:exp_p1}.
+The best solution is IVFADC-DSURF-IF, which reaches an R@50 value of 0.907, meaning that, if we use the respective top-50 rank as input to the provenance task, an average of 90.7\% of the images directly and indirectly related to the query will be available for graph construction.
+
+As one might observe, the IVFADC-based solutions presented better recall values when compared to KDF-SURF2k, even when the same number of interest points was used for describing the images of the dataset.
+That is the case, for instance, of the use of IVFADC-SURF2k, which provided an increase of approximately 17\% in R@50 over its KDF-based counterpart (KDF-SURF2k), \RED{with an insignificant increase in the average query time (from 0.15 to 0.17 minutes).}
+IVFADC makes use of CBIR state-of-the-art OPQ, which appears to be more effective than KD-trees for indexing image content.
+
+In addition, the GPU-amenable scalability provided by IVFADC allowed us to increase the number of 64-dimensional SURF interest points from 2,000 to 5,000 features per image (reaching around five billion feature vectors for the entire dataset).
+With more interest points, the dataset is better described, leading, for example, to an increase of nearly 23\% in R@50 for IVFADC-SURF2k over IVFADC-SURF5k.
+\RED{That, however, happens at the expense of slowing down the solution more than three times, from 0.17 to 0.55 minutes of average query time}.
+
+\begin{table}[t]
+\renewcommand{\arraystretch}{1.6}
+\caption{Results of provenance image filtering over the NIST dataset. We report the average values on the provided 65 queries.}
+\centering
+\begin{tabular}{R{2.2cm}C{1.0cm}C{1.0cm}C{1.0cm}C{1.2cm}}
+    \hline
+    Solution & R@50 & R@100 & R@200 & \RED{Query time (min)} \\ % & Index size (GB) & Indexing time (h) & Search time$^\dagger$ (min) \\
+    \hline
+    KDF-SURF2k~\cite{pinto2017filtering} & 0.609 & 0.633 & 0.649 & \RED{0.15} \\
+    IVFADC-SURF2k & 0.713 & 0.722 & 0.738 & \RED{0.17} \\
+    IVFADC-SURF5k & 0.876 & 0.881 & 0.883 & \RED{0.55} \\ % 176.0 & 5.0 & 0.55 \\
+    IVFADC-DSURF & 0.882 & 0.895 & 0.899 & \RED{0.54} \\ % 152.8 & 6.0 & 0.54 \\
+    IVFADC-SURF5k-IF & 0.895 & 0.901 & 0.919 & \RED{2.53} \\ % 176.0 & 5.0 & 2.53 \\
+    \textbf{IVFADC-DSURF-IF} & \textbf{0.907} & \textbf{0.912} & \textbf{0.923} & \RED{\textbf{2.20}} \\ % 152.8 & 6.0 & 2.20 \\
+    \hline
+\end{tabular}
+\vspace{0.1cm}\\
+%$\dagger$: We report the average values on the provided 65 queries. \\
+In bold, the solution with highest recall values.
+\label{tab:filtering}
+\end{table}
+
+The use of DSURF also increased the recall values.
+Its application was responsible for an improvement of almost 7\% in R@50, when we compare IVFADC-SURF5k and IVFADC-DSURF, at the expense of adding one more hour %(from five to six hours)
+to the time required to construct the index for the entire dataset.
+This extra hour is related to the additional step of avoiding interest point overlaps, which is part of the DSURF detection solution.
+\RED{Nevertheless, the average query time remains practically unchanged (0.55 and 0.54 minutes, respectively), indicating that the cost of avoiding overlaps is balanced by a description space that generates a dataset index of better quality.}
+
+Finally, the use of IF made the recall values approach 0.9, even considering R@50.
+For example, the use of IVFADC-DSURF-IF yielded an improvement of nearly 3\% in R@50 over IVFADC-DSURF.
+\RED{That happened, however, at the expense of a significant increase of search time, due to the iterative re-querying nature of IF; IVFADC-DSURF-IF lasts four times longer than IVFADC-DSURF (respectively, 0.54 and 2.20 minutes).
+However, in certain scenarios where time is not a constraint, the increase of 3\% in recall may justify the deployment of such an approach.}
+
+\RED{All results reported in this article were obtained with 24 CPU cores operating at 2.4 GHz and eight Nvidia TITAN Xp GPUs.}
+
+
+\subsection{Graph Construction}
+\label{sec:res_2}
+% TODO: Daniel: with Aparna, explain, compute, and add fusion results.
+
+%%% Daniel: the things below were already explained in the experimental setup. Content is changed to present more comments about the results.
+%Table \ref{tab:nist} shows the performance of the proposed approach in an oracle and real-world scenario on the NIST dataset. The presented results use SURF or MSER to detect keypoints of interest, SURF for description of keypoints and the number of Geometrically Consistent Matches (GCM) between each pair of images as one dissimilarity value and Mutual Information (MI) after geometric and color transformation as another. The results using GCM as dissimilarity employ Kruskal's spanning tree algorithm while the ones using MI employ the proposed clustered graph construction. The dissimilarity matrix created with GCM is symmetric and is thus used to obtain undirected provenance graphs while the latter one is asymmetric and is utilized to yield directed provenance graphs. The asymmetry of the matrix can be attributed to the transformation steps involved in computation of MI. In general, SURF leads to better Vertex Edge Overlap than MSER. This may be due to the higher density of SURF keypoints. MI, according to the existing literature, is the best metric for similarity computation and hence was used as the metric to evaluate the approach on the remaining datasets.
+
+%In order to evaluate the proposed approach in a real-world scenario, results using the end-to-end pipeline have also been reported for the NIST dataset. As can be observed, the Vertex Overlap is lower for the end-to-end analysis in comparison to oracle analysis. The reason for this drop is the loss of some relevant images during the process of filtering. Due to error in the filtering process, some images which are a part of the provenance graph are not retrieved in the top 50 ranks thus leading to missing or replaced nodes in the provenance graph constructed from these 50 images. This error is also carried over to the edge overlap as in order to have a correct edge, a preliminary requirement is to have the correct set of end nodes, thus reducing the vertex edge overlap. 
+We organize the results of graph construction according to the adopted dataset (either NIST, Professional, or Reddit).
+Table~\ref{tab:nist} shows the performance of the proposed approach over the NIST dataset.
+%As previously explained in Sec.~\ref{sec:exp_p2},
+Results are grouped into end-to-end and oracle-filter analysis.
+In the particular case of end-to-end analysis, top-100 rank lists were obtained with IVFADC-DSURF-IF filtering, the best approach reported in Table~\ref{tab:filtering}.
+As a consequence, the respective provenance graphs are built, on average, without almost $9\%$ of the image nodes, which are not retrieved in the filtering step ($R@100 = 0.912$, in the case of IVFADC-DSURF-IF).
+Oracle-filter analysis, in turn, starts from a perfect rank of images, containing all and only the graph image nodes.
+That explains the higher values of VO in such group, at the expense of reducing EO.
+The reduction of EO is explained by the availability of more related images in the step of graph construction, which increases the number of possible edges and misconnections.
+It means that the present solutions are good at removing distractors, but there is still room to improve the effective connection of sharing-content images.
+The best end-to-end solution is Cluster-SURF, retrieving, on average, directed provenance graphs with $0.613$ ground truth-graph coverage (VEO).
+The best oracle-filter solution, in turn, is Kruskal-SURF, with $0.609$ undirected graph coverage.
+%Nonetheless, GCM solutions deliver only undirected graphs (since they use Kruskal's algorithm, as explained in Sec.~\ref{sec:exp_p2}), leaving the problem of determining the edge directions open.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.6}
+\caption{Results of provenance graph construction over the NIST dataset.
+We report the average values on the provided 65 queries.}
+\centering
+%\begin{tabular}{C{1.3cm}R{1.8cm}C{0.7cm}C{0.7cm}C{0.7cm}C{0.7cm}}
+\begin{tabular}{C{1.3cm}R{2.1cm}C{1cm}C{1cm}C{1cm}}
+    \hline
+    & Solution & VO & EO & VEO\\ % & \RED{Time (min)}\\
+    \hline
+    \multirow{4}{1.3cm}{End-to-end analysis} & Kruskal-SURF~\cite{bharati2017uphy} & 0.638 & 0.429$^\dagger$ & 0.537$^\dagger$\\ % & \RED{11.71}\\
+    & Kruskal-MSER & 0.257 & 0.140$^\dagger$ & 0.199$^\dagger$\\ % & \RED{15.14}\\
+    & \textbf{Cluster-SURF} & \textbf{0.853} & \textbf{0.353} & \textbf{0.613}\\ % & \RED{\textbf{11.71}}\\
+    & Cluster-MSER  & 0.835 & 0.312 & 0.585\\ % & \RED{15.14}\\
+    \hline
+    \multirow{4}{1.3cm}{Oracle-filter analysis} & \textbf{Kruskal-SURF}~\cite{bharati2017uphy} & \textbf{0.933} & \textbf{0.256}$^\dagger$ & \textbf{0.609}$^\dagger$\\ % & \RED{\textbf{01.51}}\\
+    & Kruskal-MSER & 0.902 & 0.239$^\dagger$ & 0.585$^\dagger$\\ % & \RED{01.35}\\
+    & Cluster-SURF  & 0.931 & 0.124 & 0.546\\ % & \RED{01.51}\\
+    & Cluster-MSER  & 0.892 & 0.123 & 0.525\\ % & \RED{01.35}\\
+    \hline
+\end{tabular}
+\vspace{0.1cm}\\
+$\dagger$: Values for undirected edges. In bold, the solutions with the best VEO.
+\label{tab:nist}
+\vspace{0.3cm}
+\end{table}
+% TODO: Daniel: add standard deviations
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.6}
+\caption{Results of provenance graph construction over the Professional dataset.
+We report the average values on the 80 queries belonging to the test set.}
+\centering
+%\begin{tabular}{R{1.8cm}C{1.1cm}C{1.1cm}C{1.1cm}C{1.1cm}}
+\begin{tabular}{R{2.1cm}C{1.4cm}C{1.4cm}C{1.4cm}}
+    \hline
+    Solution & VO & EO & VEO\\ % & \RED{Time (min)}\\
+    \hline
+    \textbf{Kruskal-SURF}~\cite{bharati2017uphy} & \textbf{0.985} & \textbf{0.218}$^\dagger$ & \textbf{0.604}$^\dagger$\\ % & \RED{\textbf{04.64}}\\
+    Kruskal-MSER & 0.663 & 0.087$^\dagger$ & 0.377$^\dagger$\\ % & \RED{02.21}\\
+    Cluster-SURF  & 0.975 & 0.102 & 0.541\\ % & \RED{04.64}\\
+    Cluster-MSER  & 0.604 & 0.043 & 0.326\\ % & \RED{02.21}\\
+    \hline
+\end{tabular}
+\vspace{0.1cm}\\
+$\dagger$: Values for undirected edges. In bold, the solution with the best VEO.
+\label{tab:prof}
+\vspace{0.3cm}
+\end{table}
+% TODO: Daniel: add standard deviations
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.6}
+\caption{Results of provenance graph construction over the Reddit dataset.
+We report the average values on the provided 184 queries.}
+\centering
+%\begin{tabular}{R{1.8cm}C{1.1cm}C{1.1cm}C{1.1cm}C{1.1cm}}
+\begin{tabular}{R{2.1cm}C{1.4cm}C{1.4cm}C{1.4cm}}
+    \hline
+    Solution & VO & EO & VEO\\ % & \RED{Time (min)}\\
+    \hline
+    Kruskal-SURF~\cite{bharati2017uphy} & 0.884 & 0.156$^\dagger$ & 0.523$^\dagger$\\ % & \RED{03.92}\\
+    \textbf{Kruskal-MSER} & \textbf{0.924} & \textbf{0.121}$^\dagger$ & \textbf{0.526}$^\dagger$\\ % & \RED{\textbf{01.28}}\\
+    Cluster-SURF  & 0.757 & 0.037 & 0.401\\ % & \RED{03.92}\\
+    Cluster-MSER  & 0.509 & 0.027 & 0.271\\ % & \RED{01.28} \\
+    \hline
+\end{tabular}
+\vspace{0.1cm}\\
+$\dagger$: Values for undirected edges. In bold, the solution with the best VEO.
+\label{tab:reddit}
+\end{table}
+% TODO: Daniel: add standard deviations
+
+In Table \ref{tab:prof}, we present results of the proposed approaches on the Professional dataset.
+In comparison to the NIST dataset, the same solutions recognize fewer of the correct provenance graph edges.
+This happens due to the larger 75-node provenance graphs, which contain a number of near duplicates that were created through reversible operations.
+As a consequence, altered image nodes can be achieved using different sequences of image transformations, leading to ambiguous dissimilarity values, and multiple plausible paths, within the provenance graph.
+The methods herein discussed are solely based on image content and do not consider any extra information, thus operating with data from only the pixel domain.
+Indeed, in previous image phylogeny work reporting results on the Professional dataset, the solutions made use of data from the JPEG compression tables of the images.
+We speculate that if information regarding the compression factor is included in the present approaches, some confusion regarding the edges can be eliminated.
+That would not impact the NIST dataset, though, since only a small fraction of its images are available in JPEG format.
+Here, the best solution is Kruskal-SURF, retrieving, on average, undirected provenance graphs with $0.604$  ground truth-graph coverage (VEO).
+
+%In table \ref{tab:prof}, we present results of the proposed approaches on the Professional dataset. In comparison with the performance on the NIST dataset, the methods recognize fewer of the correct provenance graph edges. The professional dataset consists of large provenance cases with 75 images considered for each provenance graph. Also, the dataset contains a number of near-duplicate cases that have been created through operations that are reversible and similar effects can be achieved using different sequences of transformations. This leads to close dissimilarity values for these cases within provenance making each one of them a plausible path within the provenance graph. The approach presented here is solely based on image content and does not consider any extra information thus leaving the system just with information from the pixel domain, which is not comprehensive. In previous work on Multimedia Phylogeny that reports results on this dataset, the approaches utilize the information from the compression tables of the images since they are JPEGs. We speculate that if information regarding the compression factor is included in the approach, some confusion regarding the edges can be eliminated. This will mean that images that cannot provide such information will not be considered when establishing provenance, making our methods much less generalizable.
+
+Table~\ref{tab:reddit} reports results on the Reddit dataset.
+As one might observe, this dataset is the most challenging one, with low directed edge coverage (namely $EO$, in the case of Cluster-SURF and Cluster-MSER solutions).
+Since its whimsical content is the product of a diverse community, the Reddit dataset presents realistic, yet frustratingly complex, cases.
+As a consequence, it is not uncommon to find among the 184 collected provenance graphs suppressed ancestral images, as well as descendant images whose parental connections are defined by very particular and contextual semantic reasons (for instance, an arbitrary person resembling another in the parent image), than by strictly shared visual content.
+That ends up impacting our results.
+The best solution is Kruskal-MSER, which retrieves, on average, undirected provenance graphs with $0.526$  ground truth-graph coverage (VEO).
+
+\RED{With respect to runtime, the SURF-based graph construction solutions (namely Kruskal-SURF and Cluster-SURF) individually spent, on average, 12 minutes to process $100 \times 100$ image adjacency matrices on 16 CPU cores operating at 2.4 GHz.
+The MSER-based solutions (namely Kruskal-MSER and Kruskal-MSER), in turn, spent around 15 minutes to process the same amount of data on the same hardware.
+This was expected, since the MSER detection process is reportedly slower than SURF.
+Moreover, taking Kruskal's algorithm in perspective with the proposed clustered solution, the obtained differences in runtime were always below one millisecond, in favor of Kruskal, for the same data and hardware.}
+
+%Another example of the evaluation of the proposed approach in the real-world is the testing of the method in verifying provenance graphs on Reddit. Even though the dataset can have missing images because the source of alien objects used in creating compositions might not be present on Reddit, this is still considered an oracle evaluation because even the ground truth does not contain those images. All the images that are part of the ground truth are considered for provenance graph construction. 
+
+% Daniel: I added the following content to conclusion.
+%Upon scrutinizing the results from three differently sourced datasets having different types of transformations as part of the relationships between images, it can be observed that the proposed approach performs decently well in connecting the correct set of images (~0.8 vertex overlap) but fails at pointing out the correct directions ($<$0.5 edge overlap). Directions within edges are dependent on whether the transformation is reversible or can be inferred from pixel information. In this attempt to perform provenance analysis, we found that although image content is the most reliable source of information connecting related images, other external information may be required to supplement the knowledge obtained from pixels. This external information can be obtained from file metadata, object detectors and compression factors where available. 

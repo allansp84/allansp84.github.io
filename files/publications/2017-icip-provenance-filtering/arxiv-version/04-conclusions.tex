@@ -1,0 +1,9 @@
+%!TEX root = 2017-icip-provenance-filtering.tex
+\section{Conclusions}
+\label{sec:conclusions}
+In this paper, we introduced a first method for provenance filtering designed to improve retrieval of donor images in composite images. Reliable provenance filtering is highly useful for selecting the most promising candidates for more complex analyzes in the multimedia phylogeny pipeline such as graph construction and inference of directionality of donors and descendants. 
+The challenge in this problem is the retrieval of small objects considering a large image gallery.
+
+By incorporating the context of the top results with respect to the query itself, we can improve the retrieval results and better find possible donors of a given composite (forged) query $q$. Experiments with different indexing techniques have also shown that KD-forests seem to be the most effective but not the most efficient. KD-trees, on the other hand, are more efficient but less effective. In our experiments, PQ did not perform well for large galleries.
+
+Future research efforts will focus on better characterizing small forged regions, incorporating forgery detectors in the process of context analysis and also consider bringing the user into the loop with relevance feedback methods. 

@@ -1,0 +1,124 @@
+%!TEX root = 2014-TIFS-dl-spoofing.tex
+\section{Related Work}
+\label{sec:relatedwork}
+In this section, we review anti-spoofing related work for iris, face, and fingerprints, our focus in this paper.
+
+\subsection{Iris Spoofing}
+Daugman~\cite[Section 8 -- Countermeasures against Subterfuge]{Daugman:1999}\footnote{It also appears in a lecture of Daugman at IBC 2004~\cite{ Daugman:IBC:2004}.} was one of the first authors to discuss the feasibility of some attacks on iris recognition systems. The author proposed the use of Fast Fourier Transform to verify the high frequency spectral magnitude in the frequency domain.
+
+%From the analysis of the iris patterns, it is possible to distinguish a printed iris image from a real one due to the characteristics of the periodic dot printing.
+
+The solutions for iris liveness detection available in the literature range from active solutions relying on  special acquisition hardware~\cite{Lee:LNCS:2005,Pacut:2006,Kanematsu:2007} to software-based solutions relying on texture analysis of the  effects of an attacker using color contact lenses with someone else's pattern printed onto them~\cite{Wei:2008}. Software-based solutions have also explored the effects of cosmetic contact lenses~\cite{Kohli:ICB:2013,Doyle:BTAS:2013,Bowyer:Computer:2014,Yadav:TIFS:2014}; pupil constriction~\cite{Huang:WACV:2013}; and multi biometrics of  electroencephalogram (EEG) and iris together~\cite{Kathikeyan:ICCCA:2012}, among others.
+
+%Nonetheless, in the followings of this subsection, we describe in details those works directly related to the databases we use in this article.
+
+%In \cite{Lee:LNCS:2005}, Lee et al. proposed a new method based on the theoretical positions and distances between the Purkinje image (reflections of objects from the structure of the eye) based on the human eye model by using two alternating collimated \emph{Infra-Red Light Emitting Diode} (IR-LED) requiring special hardware and constrained environment. Experiments using 30 persons (10 without glasses and no contact lens, 10 without glasses and using contact lenses, and with glasses and no contact lens) and 15 counterfeit samples (2D printed iris image, 3D artificial eye and 3D patterned contact lens) were acquired. The real and fake samples where evaluated 10 and 20 times each one, respectively. The obtained results showed impressive results: 0.33 (1/300) false acceptance rate (FAR) and false rejection rate (FRR).
+
+%In \cite{Pacut:2006}, Pacut \& Czajka introduced three liveness detection algorithm based on analysis of image frequency spectrum (FS), controlled light reflection (CLR )from the cornea and pupil dynamics (PD). These methodologies were evaluated using printed fake eye images produced with different printers and printout carries. A small hole is made in place of the pupil, and this trick was enough for fake iris capturing by commercial systems. The experimental results obtained on the evaluation set composed of only 77 pairs of fake and live iris images showed that the CLR and PD methodologies achieves zero error rates and two commercial cameras have achieved $73.1\%$ and $15.6\%$ of FAR for these fake images.
+
+%Kanematsu et al.~\cite{Kanematsu:2007} have proposed a new method by using a variation in the brightness of an iris pattern induced by a pupillary reflex caused by flash-light illumination, and the classification were performed by a decision threshold of $7\%$ brightness variation rate, which is statistically defined by means of mean and standard variation. Experiments were performed using only 5 images by varying the intensity of illumination in several levels. However no effectiveness rates are reported in this work.
+
+%In \cite{Wei:2008}, Wei et al have addressed the problem of iris liveness detection based on three texture measures: iris edges sharpness (ES), iris-texton feature for characterizing the visual primitives of iris texture (IT) and using selected features based on co-occurrence matrix (CM). In special, they use fake iris wearing color contact lens with textures printed onto them. The experiments showed that the ES feature achieved comparable results to the state-of-the-art methods at that time, and the IT and CM measures outperform the state-of-the-art.
+
+Galbally et al.~\cite{Galbally:ICB:2012} investigated 22 image quality measures (e.g., focus, motion, occlusion, and pupil dilation).
+The best features are selected through sequential floating feature selection (SFFS)~\cite{Pudil:PRL:1994} to feed a quadratic discriminant classifier. The authors validated the work on the BioSec~\cite{Fierrez-Aguilar:2007,Ruiz-Albacete:BIOID:2008} benchmark. Sequeira et al.~\cite{Sequeira:VISAPP:2014} 
+also explored image quality measures~\cite{Galbally:ICB:2012} and three classification techniques validating the work on the BioSec~\cite{Fierrez-Aguilar:2007,Ruiz-Albacete:BIOID:2008} and Clarkson~\cite{LivDet:Iris:2013} benchmarks and introducing the MobBIOfake benchmark comprising 800 iris images from the MobBIO multimodal database~\cite{Sequeira:VISAPP:2014:base}.
+
+Sequeira et al.~\cite{Sequeira:IJCNN:2014} extended upon previous works also exploring quality measures. They first used a feature selection step on the features of the studied methods to obtain the ``best features'' and then used well-known classifiers for the decision-making. In addition, they applied iris segmentation~\cite{Monteiro:CCIS:2014} to obtaining the iris contour and adapted the feature extraction processes to the resulting non-circular iris regions. The validation considered five datasets (BioSec~\cite{Fierrez-Aguilar:2007,Ruiz-Albacete:BIOID:2008}, MobBIOfake~\cite{Sequeira:VISAPP:2014:base}, Warsaw~\cite{Czajka:MMAR:2013}, Clarkson~\cite{LivDet:Iris:2013} and NotreDame~\cite{Doyle:2014:base}.
+
+Textures have also been explored for iris liveness detection. In the recent MobILive\footnote{MobLive 2014, Intl. Joint Conference on Biometrics (IJCB).}~\cite{Sequeira:IJCB:2014} iris spoofing detection competition, the winning team explored three texture descriptors: Local Phase Quantization (LPQ)~\cite{Ojansivu:ISP:2008}, Binary Gabor Pattern~\cite{Zhang:ICIP:2012}, and Local Binary Pattern (LBP)~\cite{Ojala:TPAMI_2002}.
+
+Analyzing printing regularities left in printed irises, Czajka~\cite{Czajka:MMAR:2013} explored some peaks in the frequency spectrum were associated to spoofing attacks. For validation, the authors introduced the Warsaw dataset containing 729 fake images and 1,274 images of real eyes. 
+In~\cite{LivDet:Iris:2013}, The First Intl. Iris Liveness Competition in 2013, the Warsaw database was also evaluated, however, the best reported result achieved $11.95\%$ of FRR and $5.25\%$ of FAR by the University of Porto team.
+
+%For localizing the peaks, the author sets up two disjoint frequency windows located under the iris. The window is used to observe the artifacts inserted during printing processing and the second window serves as a reference to the observed disturbances in an amplitude spectrum. Finally, a liveness score is calculated based on information from these two windows. In this dataset, it is claimed that the methodology can be set up to obtain no false alarms ($0\%$ of false rejection rate (FRR)) and $5\%$ of false acceptance rate (FAR). 
+
+%Although not directly related to the datasets in our work, it is worthwhile to describe a recent work of 
+
+Sun et al.~\cite{Sun:TPAMI:2014} recently proposed a general framework for iris image classification based on a Hierarchical Visual Codebook (HVC). The HVC encodes the texture primitives of iris images and is based on two existing bag-of-words models. The method achieved state-of-the-art performance for iris spoofing detection, among other tasks.
+
+%Moreover, the authors also developed an iris image dataset with four types of fake iris patterns (iris texture printed on paper, plastic eyeballs, contact lens and synthetic fake iris images) called CASIA-Iris-Fake. The authros claimed that it is the first dataset comprising a large variety of fake iris patterns allowing an advance on the development of unified countermeasures against spoofing attacks. 
+
+In summary, iris anti-spoofing methods have explored hard-coded features through image-quality metrics, texture patterns, bags-of-visual-words and noise artifacts due to the recapturing process. The performance of such solutions vary significantly from dataset to dataset. Differently, here we propose the automatically extract vision meaningful features directly from the data using deep representations.
+
+
+\subsection{Face Spoofing}
+%Spoofing attack is easily performed against face biometrics systems due to low cost to produce a fake sample. As a matter of fact, there are excellent quality printers and digital cameras at a low price nowadays. In addition, the ease in obtaining facial information of a person through social networks and personal pages contributes for low-cost high-profit attacks.
+
+We can categorize the face anti-spoofing methods into four groups~\cite{Schwartz:IJCB:2011}: user behavior modeling, methods relying on extra devices~\cite{Yi:2014}, methods relying on user cooperation and, finally, data-driven characterization methods. In this section, we review data-driven characterization methods proposed in literature, the focus of our work herein.
+
+M\"{a}\"{a}tt\"{a} et al.~\cite{Maatta:IJCB:2011} used LBP operator for capturing printing artifacts and micro-texture patterns added in the fake biometric samples during acquisition. Schwartz et al.~\cite{Schwartz:IJCB:2011} explored color, texture, and shape of the face region and used them with Partial Least Square (PLS) classifier for deciding whether a biometric sample is fake or not. Both works validated the methods with the Print Attack benchmark~\cite{Anjos:IJCB:2011}. Lee et al.~\cite{Lee:ICASSP:2013} also explored image-based attacks and proposed the frequency entropy analysis for spoofing detection.
+
+%Results of these two techniques were reported in the Competition on Counter Measures to 2D Facial Spoofing Attacks~\cite{Chakka:IJCB:2011}, with a Half Total Error Rate (HTER) of $0.00\%$ and $0.63\%$, respectively, upon the Print Attack database~\cite{Anjos:IJCB:2011}.
+
+% as space is required and this approach does not improved the previously existing one, it was removed
+%Inspired on the work of M\"{a}\"{a}tt\"{a} et al.~\cite{Maatta:IJCB:2011}, Chingovska et al.~\cite{Chingovska:BIOSEG:2012} investigated the use of different variations of the LBP method, such as LBP$^{u2}_{3 \times 3}$, tLBP (transitional), dLBP (direction-coded) and mLBP (modified LBP). The feature vectors obtained with these descriptors were classified through $\chi^{2}$ histogram comparison, linear discriminant analysis (LDA) and SVM. However, the method did not outperform the original one~\cite{Maatta:IJCB:2011}. 
+
+Pinto et al.~\cite{Pinto:SIBGRAPI:2012} pioneered research on video-based face spoofing detection. They proposed visual rhythm analysis to capture temporal information on face spoofing attacks.
+
+%Firstly, the face region is isolated and normalized using $z$-score. Thereafter, independent component analysis (ICA) is used to eliminate cross-channel noise caused by interference from the environment. Finally, the authors use the power spectrum and analyze the entropy of the RBG channels individually to further decide upon the attack based on an empirical threshold.
+
+%During a video-based spoofing attack, a noise signature is added to the biometric samples during the recapture of the attack videos and can be used successfully to detect such attacks.
+
+Mask-based face spoofing attacks have also been considered thus far. Erdogmus et al.~\cite{Erdogmus:BIOSIG:2013} dealt with the problem through Gabor wavelets: local Gabor binary pattern histogram sequences~\cite{Zhang:ICCV:2005} and Gabor graphs~\cite{Wiskott:TPAMI:1997} with a Gabor-phase based similarity measure~\cite{Gunther:ICANN:2012}. Erdogmus \& Marcel~\cite{Erdogmus:BTAS:2013} introduced the 3D Mask Attack database (3DMAD), a public available 3D spoofing database, recorded with Microsoft Kinect sensor.
+
+%They also investigate the use of the LBP-based method and reported an HTER of $0.95\%$ and $1.27\%$ using the color and depth images, respectively.
+
+Kose et al.~\cite{Kose:ICASSP:2013} demonstrated that a face verification system is vulnerable to mask-based attacks and, in another work, Kose et al.~\cite{Kose:FG:2013} evaluated the anti-spoofing method proposed by M\"{a}\"{a}tt\"{a} et al.~\cite{Maatta:IJCB:2011} (originally proposed to detect photo-based spoofing attacks). 
+Inspired by the work of Tan et al.~\cite{Tan:ECCV:2010}, Kose et al.~\cite{Kose:DSP:2013} evaluated a solution based on reflectance to detect attacks performed with 3D masks. 
+
+%The authors reported an Area Under the Curve (AUC) of $97.0\%$ and a classification accuracy of $94.47\%$ using the non-public available MORPHO database~\cite{Kose:FG:2013}.
+
+Finally, Pereira et al.~\cite{Pereira:ICB:2013} proposed a score-level fusion strategy in order to detect various types of attacks. 
+%The authors trained classifiers using different databases and used the $Q$ statistic to evaluate the dependency between classifiers.
+%The combination of classifiers that are statistically independent leads to better results. 
+In a follow-up work, Pereira et al.~\cite{Pereira:JIVP:2014} proposed an anti-spoofing solution based on the dynamic texture, a spatio-temporal version of the original LBP. Results showed that LBP-based dynamic texture description has a higher effectiveness than the original LBP.
+
+In summary, similarly to iris spoofing detection methods, the available solutions in the literature mostly deal with the face spoofing detection problem through texture patterns (e.g., LBP-like detectors), acquisition telltales (noise), and image quality metrics. Here, we approach the proplem by extracting meaningful features directly from the data regardless of the input type (image, video, or 3D masks).
+
+
+\subsection{Fingerprint Spoofing}
+%There are several approaches for fingerprint spoofing detection. 
+We can categorize fingerprint spoofing detection methods roughly into two groups: hardware-based (exploring extra sensors) and software-based solutions (relying only on the information acquired by the standard acquisition sensor of the authentication system)~\cite{Ghiani:ICB:2013}. 
+
+%Methods following the first approach use information provided from additional sensors to gather artifacts that reveal a spoofing attack that are outside of the fingerprint image. Software-based techniques rely only on the information acquired by the standard acquisition sensor of the authentication system.
+
+Galbally et al.~\cite{Galbally:BIDS:2009} proposed a set of feature for fingerprint liveness detection based on quality measures such as ridge strength or directionality, ridge continuity, ridge clarity, and integrity of the ridge-valley structure. The validation considered the three benchmarks used in LivDet 2009 -- Fingerprint competition~\cite{Marcialis:ICIAP:2009} captured with different optical sensors: Biometrika, CrossMatch, and Identix. Later work~\cite{Galbally:FGCS:2012} explored the method in the presence of gummy fingers.
+
+%The authors built a Biometrika.ATVS  set using the Biometrika database from LivDet 2009 -- Fingerprint competition, and obtained results showing that user cooperation may hinder spoofing attacks.}
+
+%The authors reported an average error of $1.83\%$, $11.12\%$, and $6.73\%$ using Biometrika, CrossMatch and Identix sets, respectively. 
+
+
+Ghiani et al.~\cite{Ghiani:ICPR:2012} explored LPQ~\cite{Ojansivu:ISP:2008}, a method for representing all spectrum characteristics in a compact feature representation form. The validation considered the four benchmarks used in the LivDet 2011 -- Fingerprint competition~\cite{Yambay:ICB:2012}.
+
+%The authors proposed a rotation-invariant version of LPQ, referenced as Rotation Invariant Local Phase Quantization (RILPQ). 
+
+%A combination between proposed LPQ and LBP yielded even better results with a misclassification rate of $9.2\%$ considering the LivDet 2011 -- Fingerprint competition sets.
+
+Gragnaniello et al.~\cite{Gragnaniello:BIOMS:2013} explored the Weber Local Image Descriptor (WLD) for liveness detection, well suited to high-contrast patterns such as the ridges and valleys of fingerprints images. In addition, WLD is robust to noise and illumination changes. The validation considered the LivDet 2009 and LivDet 2011 -- Fingerprint competition datasets.
+
+%The misclassification rates reported were $7.13\%$ and $27.67\%$, respectively. When the proposed method is combined with RILPQ~\cite{Ojansivu:ICPR:2008}, the misclassification rates in both sets reduce to $3.13\%$ and $12.65\%$, respectively.
+
+Jia et al.~\cite{Jia:ICB:2013} proposed a liveness detection scheme based on Multi-scale Block Local Ternary Patterns (MBLTP). 
+Differently of the LBP, the Local Ternary Pattern operation is done on the average value of the block instead of the pixels being more robust to noise. 
+The validation considered the LivDet 2011 -- Fingerprint competition benchmarks.
+
+Ghiani et al.~\cite{Ghiani:BTAS:2013} explored Binarized Statistical Image Features (BSIF) originally proposed by Kannala et al.~\cite{Kannala:ICPR:2012}. The BSIF was inspired in the LBP and LPQ methods. In contrast to LBP and LPQ approaches, BSIF learns a filter set by using statistics of natural images~\cite{Hyvrinen:NIS:2009}. The validation considered the LivDet 2011 -- Fingerprint competition benchmarks.
+
+Recent results reported in the LivDet 2013 Fingerprint Liveness Detection Competition~\cite{Ghiani:BTAS:2013} show that fingerprint spoofing attack detection task is still an open problem with results still far from a perfect classification rate.
+
+We notice that most of the groups approach the problem with hard-coded features sometimes exploring quality metrics related to the modality (e.g., directionality and ridge strength), general texture patterns (e.g., LBP-, MBLTP-, and LPQ-based methods), and filter learning through natural image statistics. This last approach seems to open a new research trend, which seeks to model the problem learning features directly from the data. We follow this approach in this work, assuming little a priori knowledge about acquisition-level biometric spoofing and exploring deep representations of the data.
+
+
+%The best classification results among four used datasets were achieved by one team of the University of Naples Federico II and another from the Dermalog Identification Systems. They reported an average accuracy of $86.63\%$ and $84.63\%$, respectively.
+
+\subsection{Multi-modalities}
+
+Recently, Galbally et al.~\cite{Galbally:TIP:2014} proposed a general approach based on 25 image quality features to detect spoofing attempts in face, iris, and fingerprint biometric systems. Our work is similar to theirs in goals, but radically different with respect to the methods.
+Instead of relying on prescribed image quality features, we build features that would be hardly thought by a human expert with AO and FO.
+Moreover, here we evaluate our systems in more recent and updated benchmarks.
+
+
+% done! só deixei in [xx] quando era referenciada uma competição.
+%\TODO{Algumas vezes usa in [xx] e outras author at al.[xx], acho que poderia padronizar para author et al.[xx], quando possÃ­vel, por exemplo alguns paragrafos sobre finger printe}
