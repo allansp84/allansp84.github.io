@@ -173,11 +173,6 @@
   </url>
   
   <url>
-    <loc>https://allansp84.github.io/author/andreza-a.-dos-santos./</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://allansp84.github.io/publication/silva-2020-sensors/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
@@ -258,16 +253,6 @@
   </url>
   
   <url>
-    <loc>https://allansp84.github.io/author/jhonatas-s.-conceicao./</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://allansp84.github.io/author/jose-luis-flores-campana./</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://allansp84.github.io/author/jose-eduardo-s-vianna/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
@@ -293,11 +278,6 @@
   </url>
   
   <url>
-    <loc>https://allansp84.github.io/author/luis-gustavo-lorgus-decker./</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://allansp84.github.io/author/m.-alberto-cordova-neira/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
@@ -308,17 +288,7 @@
   </url>
   
   <url>
-    <loc>https://allansp84.github.io/author/manuel-cordova-neira./</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://allansp84.github.io/author/marcos-v.-m.-cirne/</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://allansp84.github.io/author/marcus-a.-angeloni./</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -713,11 +683,6 @@
   </url>
   
   <url>
-    <loc>https://allansp84.github.io/author/s.-marcel-extitet-al./</loc>
-    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://allansp84.github.io/publication/chingovska-2013-icb/</loc>
     <lastmod>2013-06-01T00:00:00+00:00</lastmod>
   </url>
@@ -812,7 +777,31 @@
   </url>
   
   <url>
+    <loc>https://allansp84.github.io/author/andreza-a.-dos-santos./</loc>
+  </url>
+  
+  <url>
     <loc>https://allansp84.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/jhonatas-s.-conceicao./</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/jose-luis-flores-campana./</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/luis-gustavo-lorgus-decker./</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/manuel-cordova-neira./</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/marcus-a.-angeloni./</loc>
   </url>
   
   <url>
@@ -821,6 +810,10 @@
   
   <url>
     <loc>https://allansp84.github.io/talk/</loc>
+  </url>
+  
+  <url>
+    <loc>https://allansp84.github.io/author/s.-marcel-extitet-al./</loc>
   </url>
   
 </urlset>
