@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: allansp84.github.io
+Token: ff601e416ea5675df059d433e4f57cbd80fc880eb2f91e7a231b974190cd392d
