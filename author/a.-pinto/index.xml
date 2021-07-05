@@ -5,12 +5,20 @@
     <link>https://allansp84.github.io/author/a.-pinto/</link>
       <atom:link href="https://allansp84.github.io/author/a.-pinto/index.xml" rel="self" type="application/rss+xml" />
     <description>A. Pinto</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2021 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Allan Pinto 2021 · Powered by the [Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://sourcethemes.com/academic/).</copyright><lastBuildDate>Tue, 01 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://allansp84.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>A. Pinto</title>
       <link>https://allansp84.github.io/author/a.-pinto/</link>
     </image>
+    
+    <item>
+      <title>Pelee-Text&#43;&#43;: A Tiny Neural Network for Scene Text Detection</title>
+      <link>https://allansp84.github.io/publication/cordova-2020-ieee-access/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/cordova-2020-ieee-access/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Parallax Motion Effect Generation Through Instance Segmentation And Depth Estimation</title>
@@ -23,7 +31,7 @@
     <item>
       <title>A Multirepresentational Fusion of Time Series for Pixelwise Classification</title>
       <link>https://allansp84.github.io/publication/dias-2020-jstars/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/dias-2020-jstars/</guid>
       <description></description>
     </item>
@@ -31,7 +39,7 @@
     <item>
       <title>Leveraging Shape, Reflectance and Albedo From Shading for Face Presentation Attack Detection</title>
       <link>https://allansp84.github.io/publication/pinto-2020-tifs/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/pinto-2020-tifs/</guid>
       <description></description>
     </item>
@@ -39,16 +47,8 @@
     <item>
       <title>On the Fusion of Text Detection Results: A Genetic Programming Approach</title>
       <link>https://allansp84.github.io/publication/campana-2020-ieee-access/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/campana-2020-ieee-access/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pelee-Text&#43;&#43;: A Tiny Neural Network for Scene Text Detection</title>
-      <link>https://allansp84.github.io/publication/cordova-2020-ieee-access/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://allansp84.github.io/publication/cordova-2020-ieee-access/</guid>
       <description></description>
     </item>
     

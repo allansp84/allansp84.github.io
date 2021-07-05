@@ -23,8 +23,16 @@
     <item>
       <title>A Multirepresentational Fusion of Time Series for Pixelwise Classification</title>
       <link>https://allansp84.github.io/publication/dias-2020-jstars/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/dias-2020-jstars/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On the Fusion of Text Detection Results: A Genetic Programming Approach</title>
+      <link>https://allansp84.github.io/publication/campana-2020-ieee-access/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://allansp84.github.io/publication/campana-2020-ieee-access/</guid>
       <description></description>
     </item>
     
@@ -33,14 +41,6 @@
       <link>https://allansp84.github.io/publication/decker-2020-visapp/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/decker-2020-visapp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>On the Fusion of Text Detection Results: A Genetic Programming Approach</title>
-      <link>https://allansp84.github.io/publication/campana-2020-ieee-access/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://allansp84.github.io/publication/campana-2020-ieee-access/</guid>
       <description></description>
     </item>
     
@@ -55,7 +55,7 @@
     <item>
       <title>Multi-Lingual Text Localization via Language-Specific Convolutional Neural Networks</title>
       <link>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https://allansp84.github.io/publication/conceicao-2019-sibgrapi/</guid>
       <description></description>
     </item>
